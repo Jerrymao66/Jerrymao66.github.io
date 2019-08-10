@@ -5,23 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://Jerrymao66.github.io">
   <title>最大子列和 | JerryMao&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="题目01-复杂度1 最大子列和问题 (20 分) 给定K个整数组成的序列{ N1, N2, …, N**K }，“连续子列”被定义为{ N**i, N**i+1, …, N**j }，其中 1≤i≤j≤K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计">
 <meta name="keywords" content="分治算法,在线处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最大子列和">
-<meta property="og:url" content="http://yoursite.com/2019/08/10/最大子列和/index.html">
+<meta property="og:url" content="http://Jerrymao66.github.io/2019/08/10/最大子列和/index.html">
 <meta property="og:site_name" content="JerryMao&#39;s Blog">
 <meta property="og:description" content="题目01-复杂度1 最大子列和问题 (20 分) 给定K个整数组成的序列{ N1, N2, …, N**K }，“连续子列”被定义为{ N**i, N**i+1, …, N**j }，其中 1≤i≤j≤K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/.com//2019-08-10_075211.jpg">
-<meta property="og:updated_time" content="2019-08-10T00:25:08.860Z">
+<meta property="og:image" content="http://jerrymao66.github.io/2019/08/10/最大子列和/aaa.jpg">
+<meta property="og:updated_time" content="2019-08-10T02:10:41.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大子列和">
 <meta name="twitter:description" content="题目01-复杂度1 最大子列和问题 (20 分) 给定K个整数组成的序列{ N1, N2, …, N**K }，“连续子列”被定义为{ N**i, N**i+1, …, N**j }，其中 1≤i≤j≤K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计">
-<meta name="twitter:image" content="http://yoursite.com/.com//2019-08-10_075211.jpg">
+<meta name="twitter:image" content="http://jerrymao66.github.io/2019/08/10/最大子列和/aaa.jpg">
   
     <link rel="alternative" href="/atom.xml" title="JerryMao&#39;s Blog" type="application/atom+xml">
   
@@ -197,7 +197,14 @@
 
 <h3 id="算法一（暴力）时间复杂度-O-N-2"><a href="#算法一（暴力）时间复杂度-O-N-2" class="headerlink" title="算法一（暴力）时间复杂度 O(N^2)"></a>算法一（暴力）时间复杂度 O(N^2)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum2</span><span class="params">( <span class="keyword">int</span> A[], <span class="keyword">int</span> N )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">int</span> ThisSum, MaxSum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> i, j;</span><br><span class="line"><span class="keyword">for</span>( i = <span class="number">0</span>; i &lt; N; i++ ) &#123; <span class="comment">/* i是子列左端位置 */</span></span><br><span class="line">ThisSum = <span class="number">0</span>; <span class="comment">/* ThisSum是从A[i]到A[j]的子列和 */</span></span><br><span class="line"><span class="keyword">for</span>( j = i; j &lt; N; j++ ) &#123; <span class="comment">/* j是子列右端位置 */</span></span><br><span class="line">ThisSum += A[j];</span><br><span class="line"><span class="comment">/*对于相同的i，不同的j，只要在j-1次循环的基础上累加1项即可*/</span></span><br><span class="line"><span class="keyword">if</span>( ThisSum &gt; MaxSum ) <span class="comment">/* 如果刚得到的这个子列和更大 */</span></span><br><span class="line">MaxSum = ThisSum; <span class="comment">/* 则更新结果 */</span></span><br><span class="line">&#125; <span class="comment">/* j循环结束 */</span></span><br><span class="line">&#125; <span class="comment">/* i循环结束 */</span></span><br><span class="line"><span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="算法二-分而治之-时间复杂度O-N·logN"><a href="#算法二-分而治之-时间复杂度O-N·logN" class="headerlink" title="算法二(分而治之)时间复杂度O(N·logN)"></a>算法二(分而治之)时间复杂度O(N·logN)</h3><p><img src="/.com//2019-08-10_075211.jpg" alt="显示错误"></p>
+<h3 id="算法二-分而治之-时间复杂度O-N·logN"><a href="#算法二-分而治之-时间复杂度O-N·logN" class="headerlink" title="算法二(分而治之)时间复杂度O(N·logN)"></a>算法二(分而治之)时间复杂度O(N·logN)</h3><p><img src="/2019/08/10/最大子列和/aaa.jpg" alt="显示错误"></p>
+<p>​            <strong>分治算法就是把规模一步步化小，实质上是递归的解决每一部分的内容</strong></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Max3</span><span class="params">( <span class="keyword">int</span> A, <span class="keyword">int</span> B, <span class="keyword">int</span> C )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 返回3个整数中的最大值 */</span></span><br><span class="line">    <span class="keyword">return</span> A &gt; B ? A &gt; C ? A : C : B &gt; C ? B : C;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DivideAndConquer</span><span class="params">( <span class="keyword">int</span> List[], <span class="keyword">int</span> left, <span class="keyword">int</span> right )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 分治法求List[left]到List[right]的最大子列和 */</span></span><br><span class="line">    <span class="keyword">int</span> MaxLeftSum, MaxRightSum; <span class="comment">/* 存放左右子问题的解 */</span></span><br><span class="line">    <span class="keyword">int</span> MaxLeftBorderSum, MaxRightBorderSum; <span class="comment">/*存放跨分界线的结果*/</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">int</span> LeftBorderSum, RightBorderSum;</span><br><span class="line">    <span class="keyword">int</span> center, i;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span>( left == right )  &#123; <span class="comment">/* 递归的终止条件，子列只有1个数字 */</span></span><br><span class="line">        <span class="keyword">if</span>( List[left] &gt; <span class="number">0</span> )  <span class="keyword">return</span> List[left];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/* 下面是"分"的过程 */</span></span><br><span class="line">    center = ( left + right ) / <span class="number">2</span>; <span class="comment">/* 找到中分点 */</span></span><br><span class="line">    <span class="comment">/* 递归求得两边子列的最大和 */</span></span><br><span class="line">    MaxLeftSum = DivideAndConquer( List, left, center );</span><br><span class="line">    MaxRightSum = DivideAndConquer( List, center+<span class="number">1</span>, right );</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/* 下面求跨分界线的最大子列和 */</span></span><br><span class="line">    MaxLeftBorderSum = <span class="number">0</span>; LeftBorderSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>( i=center; i&gt;=left; i-- ) &#123; <span class="comment">/* 从中线向左扫描 */</span></span><br><span class="line">        LeftBorderSum += List[i];</span><br><span class="line">        <span class="keyword">if</span>( LeftBorderSum &gt; MaxLeftBorderSum )</span><br><span class="line">            MaxLeftBorderSum = LeftBorderSum;</span><br><span class="line">    &#125; <span class="comment">/* 左边扫描结束 */</span></span><br><span class="line"> </span><br><span class="line">    MaxRightBorderSum = <span class="number">0</span>; RightBorderSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>( i=center+<span class="number">1</span>; i&lt;=right; i++ ) &#123; <span class="comment">/* 从中线向右扫描 */</span></span><br><span class="line">        RightBorderSum += List[i];</span><br><span class="line">        <span class="keyword">if</span>( RightBorderSum &gt; MaxRightBorderSum )</span><br><span class="line">            MaxRightBorderSum = RightBorderSum;</span><br><span class="line">    &#125; <span class="comment">/* 右边扫描结束 */</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">/* 下面返回"治"的结果 */</span></span><br><span class="line">    <span class="keyword">return</span> Max3( MaxLeftSum, MaxRightSum, MaxLeftBorderSum + MaxRightBorderSum );</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum3</span><span class="params">( <span class="keyword">int</span> List[], <span class="keyword">int</span> N )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 保持与前2种算法相同的函数接口 */</span></span><br><span class="line">    <span class="keyword">return</span> DivideAndConquer( List, <span class="number">0</span>, N<span class="number">-1</span> );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法四（在线处理）时间复杂度-N"><a href="#算法四（在线处理）时间复杂度-N" class="headerlink" title="算法四（在线处理）时间复杂度(N)"></a>算法四（在线处理）时间复杂度(N)</h3><p><strong>在线</strong>的意思是指每输入一个数据就进行即时处理，在任何一个地方中止输入，算法都能正确给出当前的解。</p>
+<p> 这道题使用在线处理的关键是发现<strong>如果当前子列和为负则不可能使后面的部分和增大，抛弃之。</strong></p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum4</span><span class="params">( <span class="keyword">int</span> A[], <span class="keyword">int</span> N )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">int</span> ThisSum, MaxSum;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line">ThisSum = MaxSum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>( i = <span class="number">0</span>; i &lt; N; i++ ) &#123;</span><br><span class="line">ThisSum += A[i]; <span class="comment">/* 向右累加 */</span></span><br><span class="line"><span class="keyword">if</span>( ThisSum &gt; MaxSum )</span><br><span class="line">MaxSum = ThisSum; <span class="comment">/* 发现更大和则更新当前结果 */</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>( ThisSum &lt; <span class="number">0</span> ) <span class="comment">/* 如果当前子列和为负 */</span></span><br><span class="line">ThisSum = <span class="number">0</span>; <span class="comment">/* 则不可能使后面的部分和增大，抛弃之 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -303,7 +310,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/10/最大子列和/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://Jerrymao66.github.io/2019/08/10/最大子列和/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -316,6 +323,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/08/10/一元多项式的乘法与加法运算/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          一元多项式的乘法与加法运算
+        
+      </div>
+    </a>
   
   
     <a href="/2019/07/28/堆的简单实现/" id="article-nav-older" class="article-nav-link-wrap">
@@ -445,6 +461,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">堆</a>
               </li>
              
@@ -454,6 +474,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">在线处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
             
             <div class="clearfix"></div>
