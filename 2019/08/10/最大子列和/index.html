@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/7 | JerryMao&#39;s Blog</title>
+  <title>最大子列和 | JerryMao&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JerryMao&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/07/index.html">
+  <meta name="description" content="题目01-复杂度1 最大子列和问题 (20 分) 给定K个整数组成的序列{ N1, N2, …, N**K }，“连续子列”被定义为{ N**i, N**i+1, …, N**j }，其中 1≤i≤j≤K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计">
+<meta name="keywords" content="分治算法,在线处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最大子列和">
+<meta property="og:url" content="http://yoursite.com/2019/08/10/最大子列和/index.html">
 <meta property="og:site_name" content="JerryMao&#39;s Blog">
+<meta property="og:description" content="题目01-复杂度1 最大子列和问题 (20 分) 给定K个整数组成的序列{ N1, N2, …, N**K }，“连续子列”被定义为{ N**i, N**i+1, …, N**j }，其中 1≤i≤j≤K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/.com//2019-08-10_075211.jpg">
+<meta property="og:updated_time" content="2019-08-10T00:25:08.860Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JerryMao&#39;s Blog">
+<meta name="twitter:title" content="最大子列和">
+<meta name="twitter:description" content="题目01-复杂度1 最大子列和问题 (20 分) 给定K个整数组成的序列{ N1, N2, …, N**K }，“连续子列”被定义为{ N**i, N**i+1, …, N**j }，其中 1≤i≤j≤K。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计">
+<meta name="twitter:image" content="http://yoursite.com/.com//2019-08-10_075211.jpg">
   
     <link rel="alternative" href="/atom.xml" title="JerryMao&#39;s Blog" type="application/atom+xml">
   
@@ -150,48 +157,92 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-最大子列和" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/28/堆的简单实现/" class="archive-article-date">
-  	<time datetime="2019-07-28T08:59:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/28/堆的简单实现/">堆的简单实现</a>
+    <h1 class="article-title" itemprop="name">
+      最大子列和
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/10/最大子列和/" class="archive-article-date">
+  	<time datetime="2019-08-09T23:11:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>01-复杂度1 最大子列和问题 (20 分)</p>
+<p>给定<em>K</em>个整数组成的序列{ <em>N</em>1, <em>N</em>2, …, <em>N**K</em> }，“连续子列”被定义为{ <em>N**i</em>, <em>N**i</em>+1, …, <em>N**j</em> }，其中 1≤<em>i</em>≤<em>j</em>≤<em>K</em>。“最大子列和”则被定义为所有连续子列元素的和中最大者。例如给定序列{ -2, 11, -4, 13, -5, -2 }，其连续子列{ 11, -4, 13 }有最大的和20。现要求你编写程序，计算给定整数序列的最大子列和。</p>
+<a id="more"></a>
+
+<p>本题旨在测试各种不同的算法在各种数据情况下的表现。各组测试数据特点如下：</p>
+<ul>
+<li>数据1：与样例等价，测试基本正确性；</li>
+<li>数据2：102个随机整数；</li>
+<li>数据3：103个随机整数；</li>
+<li>数据4：104个随机整数；</li>
+<li>数据5：105个随机整数；</li>
+</ul>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式:"></a>输入格式:</h3><p>输入第1行给出正整数<em>K</em> (≤100000)；第2行给出<em>K</em>个整数，其间以空格分隔。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式:"></a>输出格式:</h3><p>在一行中输出最大子列和。如果序列中所有整数皆为负数，则输出0。</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">-2 11 -4 13 -5 -2</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法一（暴力）时间复杂度-O-N-2"><a href="#算法一（暴力）时间复杂度-O-N-2" class="headerlink" title="算法一（暴力）时间复杂度 O(N^2)"></a>算法一（暴力）时间复杂度 O(N^2)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum2</span><span class="params">( <span class="keyword">int</span> A[], <span class="keyword">int</span> N )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">int</span> ThisSum, MaxSum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> i, j;</span><br><span class="line"><span class="keyword">for</span>( i = <span class="number">0</span>; i &lt; N; i++ ) &#123; <span class="comment">/* i是子列左端位置 */</span></span><br><span class="line">ThisSum = <span class="number">0</span>; <span class="comment">/* ThisSum是从A[i]到A[j]的子列和 */</span></span><br><span class="line"><span class="keyword">for</span>( j = i; j &lt; N; j++ ) &#123; <span class="comment">/* j是子列右端位置 */</span></span><br><span class="line">ThisSum += A[j];</span><br><span class="line"><span class="comment">/*对于相同的i，不同的j，只要在j-1次循环的基础上累加1项即可*/</span></span><br><span class="line"><span class="keyword">if</span>( ThisSum &gt; MaxSum ) <span class="comment">/* 如果刚得到的这个子列和更大 */</span></span><br><span class="line">MaxSum = ThisSum; <span class="comment">/* 则更新结果 */</span></span><br><span class="line">&#125; <span class="comment">/* j循环结束 */</span></span><br><span class="line">&#125; <span class="comment">/* i循环结束 */</span></span><br><span class="line"><span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算法二-分而治之-时间复杂度O-N·logN"><a href="#算法二-分而治之-时间复杂度O-N·logN" class="headerlink" title="算法二(分而治之)时间复杂度O(N·logN)"></a>算法二(分而治之)时间复杂度O(N·logN)</h3><p><img src="/.com//2019-08-10_075211.jpg" alt="显示错误"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">堆</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">分治算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">在线处理</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -204,17 +255,104 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/10/最大子列和/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/07/28/堆的简单实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">堆的简单实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -237,8 +375,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
