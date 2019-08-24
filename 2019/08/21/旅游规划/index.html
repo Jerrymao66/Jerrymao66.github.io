@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="JerryMao&#39;s Blog">
 <meta property="og:description" content="有了一张自驾旅游路线图，你会知道城市间的高速公路长度、以及该公路要收取的过路费。现在需要你写一个程序，帮助前来咨询的游客找一条出发地和目的地之间的最短路径。如果有若干条路径都是最短的，那么需要输出最便宜的一条路径。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-21T09:07:35.968Z">
+<meta property="og:updated_time" content="2019-08-22T01:34:13.697Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="旅游规划">
 <meta name="twitter:description" content="有了一张自驾旅游路线图，你会知道城市间的高速公路长度、以及该公路要收取的过路费。现在需要你写一个程序，帮助前来咨询的游客找一条出发地和目的地之间的最短路径。如果有若干条路径都是最短的，那么需要输出最便宜的一条路径。">
@@ -184,9 +184,14 @@
 
 <h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 40</span><br></pre></td></tr></table></figure>
 
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>根据题意很明显这是求<strong>单源无向图的最短路径</strong>问题</p>
-<p>但是这道题在路径最短有多种选择的情况下，要采用费用最短的选择</p>
-<p>所以可以改变每个点的储存结构在储存路径长度的同时，把费用也存储进去</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
+<li><p>根据题意很明显这是求<strong>单源无向图的最短路径</strong>问题</p>
+</li>
+<li><p>但是这道题在路径最短有多种选择的情况下，要采用费用最短的选择</p>
+</li>
+<li><p>所以可以改变每个点的储存结构在储存路径长度的同时，把费用也存储进去</p>
+</li>
+</ul>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 505</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 505</span></span><br><span class="line"><span class="comment">//顶点的存储结构</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">point</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">	<span class="keyword">int</span> cost;</span><br><span class="line">&#125;Point;</span><br><span class="line"><span class="comment">//采用邻接矩阵的存储方式</span></span><br><span class="line">Point G[MAXSIZE][MAXSIZE];</span><br><span class="line"><span class="keyword">int</span> collection[MAXSIZE],dist[MAXSIZE],cost[MAXSIZE]; </span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijstra</span><span class="params">(<span class="keyword">int</span> s)</span></span>;</span><br><span class="line"><span class="comment">//初始化图</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">			&#123;G[i][j].length=INF;</span><br><span class="line">				G[i][j].cost=INF;</span><br><span class="line">			&#125;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> S,D,city1,city2,Length,Cost;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;n,&amp;m,&amp;S,&amp;D);</span><br><span class="line">	init();</span><br><span class="line">	 <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;city1,&amp;city2,&amp;Length,&amp;Cost);</span><br><span class="line">        G[city1][city2].length = G[city2][city1].length = Length;</span><br><span class="line">        G[city1][city2].cost = G[city2][city1].cost = Cost;</span><br><span class="line">    &#125;</span><br><span class="line">    Dijstra(S);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d"</span>,dist[D],cost[D]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;<span class="comment">//Dijstra算法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijstra</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,minD,minV;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		dist[i]=G[s][i].length;</span><br><span class="line">		cost[i]=G[s][i].cost;</span><br><span class="line">	&#125;</span><br><span class="line">	dist[s]=<span class="number">0</span>;cost[s]=<span class="number">0</span>;collection[s]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;n;j++)&#123;</span><br><span class="line">		minD=INF;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)<span class="comment">//找出距离最小的顶点</span></span><br><span class="line">			<span class="keyword">if</span>(!collection[i]&amp;&amp;dist[i]&lt;minD)</span><br><span class="line">					&#123;</span><br><span class="line">						minD=dist[i];</span><br><span class="line">						minV=i;</span><br><span class="line">					&#125;</span><br><span class="line">			<span class="keyword">if</span>(minD&lt;INF)<span class="comment">//将距离最小的顶点收入集合中</span></span><br><span class="line">				collection[minV]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)<span class="comment">//</span></span><br><span class="line">				<span class="keyword">if</span>(!collection[i])&#123;</span><br><span class="line">					<span class="keyword">if</span>(G[minV][i].length+dist[minV]&lt;dist[i])<span class="comment">//更新距离长度</span></span><br><span class="line">						&#123;dist[i]=G[minV][i].length+dist[minV];</span><br><span class="line">						cost[i]=G[minV][i].cost+cost[minV];&#125;</span><br><span class="line">				 	<span class="keyword">else</span> <span class="keyword">if</span>(G[minV][i].length+dist[minV]==dist[i]</span><br><span class="line">                         &amp;&amp;cost[minV]+G[minV][i].cost&lt;cost[i])&#123;<span class="comment">//距离相等按照费用更新</span></span><br><span class="line">					cost[i]=G[minV][i].cost+cost[minV];</span><br><span class="line">				&#125;</span><br><span class="line">            &#125;		 </span><br><span class="line">	  &#125;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -307,6 +312,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/08/22/FileTransfer/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          File Transfer
+        
+      </div>
+    </a>
   
   
     <a href="/2019/08/21/列出图的联通集/" id="article-nav-older" class="article-nav-link-wrap">
@@ -436,19 +450,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图的遍历</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">递归</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图的遍历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,6 +487,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">在线处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
             
             <div class="clearfix"></div>
