@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://Jerrymao66.github.io">
-  <title>Archives: 2019/7 | JerryMao&#39;s Blog</title>
+  <title>图的创建 | JerryMao&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JerryMao&#39;s Blog">
-<meta property="og:url" content="http://Jerrymao66.github.io/archives/2019/07/index.html">
+  <meta name="description" content="用邻接矩阵表示图 1234567typedef struct GNode *PtrToGNode;struct GNode &amp;#123;        int Nv; /* 顶点数 */        int Ne; /* 边数 */        DataType Data[MaxVertexNum]; /* 存顶点的数据 */&amp;#125;;typedef PtrToGNode MGraph;">
+<meta name="keywords" content="图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图的创建">
+<meta property="og:url" content="http://Jerrymao66.github.io/2019/08/28/图的创建/index.html">
 <meta property="og:site_name" content="JerryMao&#39;s Blog">
+<meta property="og:description" content="用邻接矩阵表示图 1234567typedef struct GNode *PtrToGNode;struct GNode &amp;#123;        int Nv; /* 顶点数 */        int Ne; /* 边数 */        DataType Data[MaxVertexNum]; /* 存顶点的数据 */&amp;#125;;typedef PtrToGNode MGraph;">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://jerrymao66.github.io/2019/08/28/图的创建/1.jpg">
+<meta property="og:image" content="http://jerrymao66.github.io/2019/08/28/图的创建/2.jpg">
+<meta property="og:image" content="http://jerrymao66.github.io/2019/08/28/图的创建/3.jpg">
+<meta property="og:updated_time" content="2019-08-28T11:17:17.525Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JerryMao&#39;s Blog">
+<meta name="twitter:title" content="图的创建">
+<meta name="twitter:description" content="用邻接矩阵表示图 1234567typedef struct GNode *PtrToGNode;struct GNode &amp;#123;        int Nv; /* 顶点数 */        int Ne; /* 边数 */        DataType Data[MaxVertexNum]; /* 存顶点的数据 */&amp;#125;;typedef PtrToGNode MGraph;">
+<meta name="twitter:image" content="http://jerrymao66.github.io/2019/08/28/图的创建/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="JerryMao&#39;s Blog" type="application/atom+xml">
   
@@ -148,48 +157,97 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-图的创建" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/28/堆的简单实现/" class="archive-article-date">
-  	<time datetime="2019-07-28T08:59:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/28/堆的简单实现/">堆的简单实现</a>
+    <h1 class="article-title" itemprop="name">
+      图的创建
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/28/图的创建/" class="archive-article-date">
+  	<time datetime="2019-08-28T10:35:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用邻接矩阵表示图"><a href="#用邻接矩阵表示图" class="headerlink" title="用邻接矩阵表示图"></a>用邻接矩阵表示图</h3><p><img src="/2019/08/28/图的创建/1.jpg" alt></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">GNode</span> *<span class="title">PtrToGNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GNode</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> Nv; <span class="comment">/* 顶点数 */</span></span><br><span class="line">        <span class="keyword">int</span> Ne; <span class="comment">/* 边数 */</span></span><br><span class="line">        DataType Data[MaxVertexNum]; <span class="comment">/* 存顶点的数据 */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToGNode MGraph; <span class="comment">/* 以邻接矩阵存储的图类型 */</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="MGraph初始化"><a href="#MGraph初始化" class="headerlink" title="MGraph初始化"></a>MGraph初始化</h4><ul>
+<li>初始化一个有VertexNum个顶点但没有边的图</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Vertex; <span class="comment">/* 用顶点下标表示顶点,为整型 */</span></span><br><span class="line"><span class="function">MGraph <span class="title">CreateGraph</span><span class="params">( <span class="keyword">int</span> VertexNum )</span></span></span><br><span class="line"><span class="function"></span>&#123; 		Vertex V, W;</span><br><span class="line">        MGraph Graph;</span><br><span class="line">        Graph = (MGraph)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct GNode));</span><br><span class="line">        Graph-&gt;Nv = VertexNum;</span><br><span class="line">        Graph-&gt;Ne = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">/* 注意：这里默认顶点编号从0开始，到(Graph-&gt;Nv - 1) */</span></span><br><span class="line">        <span class="keyword">for</span> (V=<span class="number">0</span>; V&lt;Graph-&gt;Nv; V++)</span><br><span class="line">        	<span class="keyword">for</span> (W=<span class="number">0</span>; W&lt;Graph-&gt;Nv; W++)</span><br><span class="line">        		Graph-&gt;G[V][W] = <span class="number">0</span>; <span class="comment">/* 或INFINITY */</span></span><br><span class="line">        <span class="keyword">return</span> Graph;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="完整地建立一个MGraph"><a href="#完整地建立一个MGraph" class="headerlink" title="完整地建立一个MGraph"></a>完整地建立一个MGraph</h4><ul>
+<li>输入格式<br>Nv Ne<br>V1 V2 Weight</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">MGraph <span class="title">BuildGraph</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123; 		MGraph Graph;</span><br><span class="line">        Edge E;</span><br><span class="line">        Vertex V;</span><br><span class="line">        <span class="keyword">int</span> Nv, i;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;Nv);</span><br><span class="line">        Graph = CreateGraph(Nv);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;(Graph-&gt;Ne));</span><br><span class="line">        <span class="keyword">if</span> ( Graph-&gt;Ne != <span class="number">0</span> ) &#123;</span><br><span class="line">        	E = (Edge)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct ENode));</span><br><span class="line">            <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;Graph-&gt;Ne; i++) &#123;</span><br><span class="line">            	<span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;E-&gt;V1, &amp;E-&gt;V2, &amp;E-&gt;Weight);</span><br><span class="line">            InsertEdge( Graph, E );</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">/* 如果顶点有数据的话，读入数据 */</span></span><br><span class="line">        <span class="keyword">for</span> (V=<span class="number">0</span>; V&lt;Graph-&gt;Nv; V++)</span><br><span class="line">        	<span class="built_in">scanf</span>(<span class="string">" %c"</span>, &amp;(Graph-&gt;Data[V]));</span><br><span class="line">        <span class="keyword">return</span> Graph;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="用邻接表表示图"><a href="#用邻接表表示图" class="headerlink" title="用邻接表表示图"></a>用邻接表表示图</h3><ul>
+<li>邻接表：G[N]为指针数组，对应矩阵每行一个链表，只存非0元素</li>
+</ul>
+<p><img src="/2019/08/28/图的创建/2.jpg" alt></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">GNode</span> *<span class="title">PtrToGNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> Nv; <span class="comment">/* 顶点数 */</span></span><br><span class="line">    <span class="keyword">int</span> Ne; <span class="comment">/* 边数 */</span></span><br><span class="line">    AdjList G; <span class="comment">/* 邻接表 */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToGNode LGraph;</span><br><span class="line"><span class="comment">/* 以邻接表方式存储的图类型 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">AdjVNode</span> *<span class="title">PtrToAdjVNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AdjVNode</span> &#123;</span></span><br><span class="line">        Vertex AdjV; <span class="comment">/* 邻接点下标 */</span></span><br><span class="line">        WeightType Weight; <span class="comment">/* 边权重 */</span></span><br><span class="line">        PtrToAdjVNode Next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Vnode</span>&#123;</span></span><br><span class="line">    PtrToAdjVNode FirstEdge;</span><br><span class="line">    DataType Data; <span class="comment">/* 存顶点的数据 */</span></span><br><span class="line">&#125; AdjList[MaxVertexNum];</span><br><span class="line"><span class="comment">/* AdjList是邻接表类型 */</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="LGraph初始化"><a href="#LGraph初始化" class="headerlink" title="LGraph初始化"></a>LGraph初始化</h4><ul>
+<li>初始化一个有VertexNum个顶点但没有边的图</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Vertex; <span class="comment">/* 用顶点下标表示顶点,为整型 */</span></span><br><span class="line"><span class="function">LGraph <span class="title">CreateGraph</span><span class="params">( <span class="keyword">int</span> VertexNum )</span></span></span><br><span class="line"><span class="function"></span>&#123; 		Vertex V, W;</span><br><span class="line">        LGraph Graph;</span><br><span class="line">        Graph = (LGraph)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct GNode));</span><br><span class="line">        Graph-&gt;Nv = VertexNum;</span><br><span class="line">        Graph-&gt;Ne = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">/* 注意：这里默认顶点编号从0开始，到(Graph-&gt;Nv - 1) */</span></span><br><span class="line">        <span class="keyword">for</span> ( V=<span class="number">0</span>; V&lt;Graph-&gt;Nv; V++ )</span><br><span class="line">        	Graph-&gt;G[V].FirstEdge = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span> Graph;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="向LGraph中插入边"><a href="#向LGraph中插入边" class="headerlink" title="向LGraph中插入边"></a>向LGraph中插入边</h4><p><img src="/2019/08/28/图的创建/3.jpg" alt></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertEdge</span><span class="params">( LGraph Graph, Edge E )</span></span></span><br><span class="line"><span class="function"></span>&#123; PtrToAdjVNode NewNode;</span><br><span class="line">        <span class="comment">/***************** 插入边 &lt;V1, V2&gt; ****************/</span></span><br><span class="line">        <span class="comment">/* 为V2建立新的邻接点 */</span></span><br><span class="line">        NewNode = (PtrToAdjVNode)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct AdjVNode));</span><br><span class="line">        NewNode-&gt;AdjV = E-&gt;V2;</span><br><span class="line">        NewNode-&gt;Weight = E-&gt;Weight;</span><br><span class="line">        <span class="comment">/* 将V2插入V1的表头 */</span></span><br><span class="line">        NewNode-&gt;Next = Graph-&gt;G[E-&gt;V1].FirstEdge;</span><br><span class="line">        Graph-&gt;G[E-&gt;V1].FirstEdge = NewNode;</span><br><span class="line">        <span class="comment">/********** 若是无向图，还要插入边 &lt;V2, V1&gt; **********/</span></span><br><span class="line">        <span class="comment">/* 为V1建立新的邻接点 */</span></span><br><span class="line">        NewNode = (PtrToAdjVNode)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct AdjVNode));</span><br><span class="line">        NewNode-&gt;AdjV = E-&gt;V1;</span><br><span class="line">        NewNode-&gt;Weight = E-&gt;Weight;</span><br><span class="line">        <span class="comment">/* 将V1插入V2的表头 */</span></span><br><span class="line">        NewNode-&gt;Next = Graph-&gt;G[E-&gt;V2].FirstEdge;</span><br><span class="line">        Graph-&gt;G[E-&gt;V2].FirstEdge = NewNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="完整地建立一个LGraph"><a href="#完整地建立一个LGraph" class="headerlink" title="完整地建立一个LGraph"></a>完整地建立一个LGraph</h4><p><strong>同邻接矩阵法······</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">堆</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">图</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -202,17 +260,104 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://Jerrymao66.github.io/2019/08/28/图的创建/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/08/24/高级排序/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">高级排序</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -235,8 +380,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

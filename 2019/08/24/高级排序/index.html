@@ -31,7 +31,8 @@
 <meta property="og:image" content="http://jerrymao66.github.io/2019/08/24/高级排序/13.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/08/24/高级排序/14.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/08/24/高级排序/15.jpg">
-<meta property="og:updated_time" content="2019-08-24T10:55:49.247Z">
+<meta property="og:image" content="http://jerrymao66.github.io/2019/08/24/高级排序/16.jpg">
+<meta property="og:updated_time" content="2019-08-25T00:25:00.513Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高级排序">
 <meta name="twitter:description" content="归并排序核心：有序子列的归并">
@@ -86,8 +87,6 @@
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
     			
             
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
     			
             
     			
@@ -256,6 +255,7 @@
 
 <h5 id="基数排序-主位优先"><a href="#基数排序-主位优先" class="headerlink" title="基数排序 - 主位优先"></a>基数排序 - 主位优先</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 假设元素最多有MaxDigit个关键字，基数全是同样的Radix */</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxDigit 4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Radix 10</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/* 桶元素结点 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">PtrToNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> key;</span><br><span class="line">    PtrToNode next;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* 桶头结点 */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">HeadNode</span> &#123;</span></span><br><span class="line">    PtrToNode head, tail;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HeadNode</span> <span class="title">Bucket</span>[<span class="title">Radix</span>];</span></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetDigit</span> <span class="params">( <span class="keyword">int</span> X, <span class="keyword">int</span> D )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 默认次位D=1, 主位D&lt;=MaxDigit */</span></span><br><span class="line">    <span class="keyword">int</span> d, i;</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>; i&lt;=D; i++) &#123;</span><br><span class="line">        d = X%Radix;</span><br><span class="line">        X /= Radix;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MSD</span><span class="params">( ElementType A[], <span class="keyword">int</span> L, <span class="keyword">int</span> R, <span class="keyword">int</span> D )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 核心递归函数: 对A[L]...A[R]的第D位数进行排序 */</span></span><br><span class="line">     <span class="keyword">int</span> Di, i, j;</span><br><span class="line">     Bucket B;</span><br><span class="line">     PtrToNode tmp, p, List = <span class="literal">NULL</span>; </span><br><span class="line">     <span class="keyword">if</span> (D==<span class="number">0</span>) <span class="keyword">return</span>; <span class="comment">/* 递归终止条件 */</span></span><br><span class="line">      </span><br><span class="line">     <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;Radix; i++) <span class="comment">/* 初始化每个桶为空链表 */</span></span><br><span class="line">         B[i].head = B[i].tail = <span class="literal">NULL</span>;</span><br><span class="line">     <span class="keyword">for</span> (i=L; i&lt;=R; i++) &#123; <span class="comment">/* 将原始序列逆序存入初始链表List */</span></span><br><span class="line">         tmp = (PtrToNode)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">         tmp-&gt;key = A[i];</span><br><span class="line">         tmp-&gt;next = List;</span><br><span class="line">         List = tmp;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">/* 下面是分配的过程 */</span></span><br><span class="line">     p = List;</span><br><span class="line">     <span class="keyword">while</span> (p) &#123;</span><br><span class="line">         Di = GetDigit(p-&gt;key, D); <span class="comment">/* 获得当前元素的当前位数字 */</span></span><br><span class="line">         <span class="comment">/* 从List中摘除 */</span></span><br><span class="line">         tmp = p; p = p-&gt;next;</span><br><span class="line">         <span class="comment">/* 插入B[Di]号桶 */</span></span><br><span class="line">         <span class="keyword">if</span> (B[Di].head == <span class="literal">NULL</span>) B[Di].tail = tmp;</span><br><span class="line">         tmp-&gt;next = B[Di].head;</span><br><span class="line">         B[Di].head = tmp;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">/* 下面是收集的过程 */</span></span><br><span class="line">     i = j = L; <span class="comment">/* i, j记录当前要处理的A[]的左右端下标 */</span></span><br><span class="line">     <span class="keyword">for</span> (Di=<span class="number">0</span>; Di&lt;Radix; Di++) &#123; <span class="comment">/* 对于每个桶 */</span></span><br><span class="line">         <span class="keyword">if</span> (B[Di].head) &#123; <span class="comment">/* 将非空的桶整桶倒入A[], 递归排序 */</span></span><br><span class="line">             p = B[Di].head;</span><br><span class="line">             <span class="keyword">while</span> (p) &#123;</span><br><span class="line">                 tmp = p;</span><br><span class="line">                 p = p-&gt;next;</span><br><span class="line">                 A[j++] = tmp-&gt;key;</span><br><span class="line">                 <span class="built_in">free</span>(tmp);</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="comment">/* 递归对该桶数据排序, 位数减1 */</span></span><br><span class="line">             MSD(A, i, j<span class="number">-1</span>, D<span class="number">-1</span>);</span><br><span class="line">             i = j; <span class="comment">/* 为下一个桶对应的A[]左端 */</span></span><br><span class="line">         &#125; </span><br><span class="line">     &#125; </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MSDRadixSort</span><span class="params">( ElementType A[], <span class="keyword">int</span> N )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 统一接口 */</span></span><br><span class="line">    MSD(A, <span class="number">0</span>, N<span class="number">-1</span>, MaxDigit); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="排序算法的比较"><a href="#排序算法的比较" class="headerlink" title="排序算法的比较"></a>排序算法的比较</h3><p><img src="/2019/08/24/高级排序/16.jpg" alt></p>
 
       
 
@@ -371,6 +371,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/08/28/图的创建/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          图的创建
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/08/23/简单排序/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">简单排序及其进阶版</div>
@@ -457,8 +466,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
-      
-      
     
       
       
@@ -470,15 +477,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -585,38 +590,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	</section>
     
 
-    
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
     
 
     
