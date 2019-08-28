@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://Jerrymao66.github.io">
-  <title>Archives: 2019 | JerryMao&#39;s Blog</title>
+  <title>最小生成树 | JerryMao&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JerryMao&#39;s Blog">
-<meta property="og:url" content="http://Jerrymao66.github.io/archives/2019/page/2/index.html">
+  <meta name="description" content="什么是最小生成树(Minimum Spanning Tree)">
+<meta name="keywords" content="图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最小生成树">
+<meta property="og:url" content="http://Jerrymao66.github.io/2019/08/28/最小生成树/index.html">
 <meta property="og:site_name" content="JerryMao&#39;s Blog">
+<meta property="og:description" content="什么是最小生成树(Minimum Spanning Tree)">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://jerrymao66.github.io/2019/08/28/最小生成树/1.jpg">
+<meta property="og:image" content="http://jerrymao66.github.io/2019/08/28/最小生成树/2.jpg">
+<meta property="og:image" content="http://jerrymao66.github.io/2019/08/28/最小生成树/3.jpg">
+<meta property="og:image" content="http://jerrymao66.github.io/2019/08/28/最小生成树/2.jpg">
+<meta property="og:updated_time" content="2019-08-28T11:47:33.525Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JerryMao&#39;s Blog">
+<meta name="twitter:title" content="最小生成树">
+<meta name="twitter:description" content="什么是最小生成树(Minimum Spanning Tree)">
+<meta name="twitter:image" content="http://jerrymao66.github.io/2019/08/28/最小生成树/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="JerryMao&#39;s Blog" type="application/atom+xml">
   
@@ -148,52 +158,93 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-最小生成树" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      最小生成树
+    </h1>
+  
+
+        
+        <a href="/2019/08/28/最小生成树/" class="archive-article-date">
+  	<time datetime="2019-08-28T11:45:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是最小生成树-Minimum-Spanning-Tree"><a href="#什么是最小生成树-Minimum-Spanning-Tree" class="headerlink" title="什么是最小生成树(Minimum Spanning Tree)"></a>什么是最小生成树(Minimum Spanning Tree)</h3><p><img src="/2019/08/28/最小生成树/1.jpg" alt></p>
+<a id="more"></a>
+
+<h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><ul>
+<li>什么是“贪”：每一步都要最好的</li>
+<li>什么是“好”：权重最小的边</li>
+<li>需要约束：<ul>
+<li>只能用图里有的边</li>
+<li>只能正好用掉|V|-1条边</li>
+<li>不能有回路</li>
+</ul>
+</li>
+</ul>
+<h3 id="Prim算法-—-让一棵小树长大"><a href="#Prim算法-—-让一棵小树长大" class="headerlink" title="Prim算法 — 让一棵小树长大"></a>Prim算法 — 让一棵小树长大</h3><p><img src="/2019/08/28/最小生成树/2.jpg" alt></p>
+<h4 id="Prim算法和Dijkstra算法的比较"><a href="#Prim算法和Dijkstra算法的比较" class="headerlink" title="Prim算法和Dijkstra算法的比较"></a>Prim算法和Dijkstra算法的比较</h4><p><img src="/2019/08/28/最小生成树/3.jpg" alt></p>
+<p><strong>实现</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 邻接矩阵存储 - Prim最小生成树算法 */</span></span><br><span class="line"> </span><br><span class="line"><span class="function">Vertex <span class="title">FindMinDist</span><span class="params">( MGraph Graph, WeightType dist[] )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 返回未被收录顶点中dist最小者 */</span></span><br><span class="line">    Vertex MinV, V;</span><br><span class="line">    WeightType MinDist = INFINITY;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> (V=<span class="number">0</span>; V&lt;Graph-&gt;Nv; V++) &#123;</span><br><span class="line">        <span class="keyword">if</span> ( dist[V]!=<span class="number">0</span> &amp;&amp; dist[V]&lt;MinDist) &#123;</span><br><span class="line">            <span class="comment">/* 若V未被收录，且dist[V]更小 */</span></span><br><span class="line">            MinDist = dist[V]; <span class="comment">/* 更新最小距离 */</span></span><br><span class="line">            MinV = V; <span class="comment">/* 更新对应顶点 */</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (MinDist &lt; INFINITY) <span class="comment">/* 若找到最小dist */</span></span><br><span class="line">        <span class="keyword">return</span> MinV; <span class="comment">/* 返回对应的顶点下标 */</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> ERROR;  <span class="comment">/* 若这样的顶点不存在，返回-1作为标记 */</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Prim</span><span class="params">( MGraph Graph, LGraph MST )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 将最小生成树保存为邻接表存储的图MST，返回最小权重和 */</span></span><br><span class="line">    WeightType dist[MaxVertexNum], TotalWeight;</span><br><span class="line">    Vertex parent[MaxVertexNum], V, W;</span><br><span class="line">    <span class="keyword">int</span> VCount;</span><br><span class="line">    Edge E;</span><br><span class="line">     </span><br><span class="line">    <span class="comment">/* 初始化。默认初始点下标是0 */</span></span><br><span class="line">       <span class="keyword">for</span> (V=<span class="number">0</span>; V&lt;Graph-&gt;Nv; V++) &#123;</span><br><span class="line">        <span class="comment">/* 这里假设若V到W没有直接的边，则Graph-&gt;G[V][W]定义为INFINITY */</span></span><br><span class="line">           dist[V] = Graph-&gt;G[<span class="number">0</span>][V];</span><br><span class="line">           parent[V] = <span class="number">0</span>; <span class="comment">/* 暂且定义所有顶点的父结点都是初始点0 */</span> </span><br><span class="line">    &#125;</span><br><span class="line">    TotalWeight = <span class="number">0</span>; <span class="comment">/* 初始化权重和     */</span></span><br><span class="line">    VCount = <span class="number">0</span>;      <span class="comment">/* 初始化收录的顶点数 */</span></span><br><span class="line">    <span class="comment">/* 创建包含所有顶点但没有边的图。注意用邻接表版本 */</span></span><br><span class="line">    MST = CreateGraph(Graph-&gt;Nv);</span><br><span class="line">    E = (Edge)<span class="built_in">malloc</span>( <span class="keyword">sizeof</span>(struct ENode) ); <span class="comment">/* 建立空的边结点 */</span></span><br><span class="line">            </span><br><span class="line">    <span class="comment">/* 将初始点0收录进MST */</span></span><br><span class="line">    dist[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    VCount ++;</span><br><span class="line">    parent[<span class="number">0</span>] = <span class="number">-1</span>; <span class="comment">/* 当前树根是0 */</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        V = FindMinDist( Graph, dist );</span><br><span class="line">        <span class="comment">/* V = 未被收录顶点中dist最小者 */</span></span><br><span class="line">        <span class="keyword">if</span> ( V==ERROR ) <span class="comment">/* 若这样的V不存在 */</span></span><br><span class="line">            <span class="keyword">break</span>;   <span class="comment">/* 算法结束 */</span></span><br><span class="line">             </span><br><span class="line">        <span class="comment">/* 将V及相应的边&lt;parent[V], V&gt;收录进MST */</span></span><br><span class="line">        E-&gt;V1 = parent[V];</span><br><span class="line">        E-&gt;V2 = V;</span><br><span class="line">        E-&gt;Weight = dist[V];</span><br><span class="line">        InsertEdge( MST, E );</span><br><span class="line">        TotalWeight += dist[V];</span><br><span class="line">        dist[V] = <span class="number">0</span>;</span><br><span class="line">        VCount++;</span><br><span class="line">         </span><br><span class="line">        <span class="keyword">for</span>( W=<span class="number">0</span>; W&lt;Graph-&gt;Nv; W++ ) <span class="comment">/* 对图中的每个顶点W */</span></span><br><span class="line">            <span class="keyword">if</span> ( dist[W]!=<span class="number">0</span> &amp;&amp; Graph-&gt;G[V][W]&lt;INFINITY ) &#123;</span><br><span class="line">            <span class="comment">/* 若W是V的邻接点并且未被收录 */</span></span><br><span class="line">                <span class="keyword">if</span> ( Graph-&gt;G[V][W] &lt; dist[W] ) &#123;</span><br><span class="line">                <span class="comment">/* 若收录V使得dist[W]变小 */</span></span><br><span class="line">                    dist[W] = Graph-&gt;G[V][W]; <span class="comment">/* 更新dist[W] */</span></span><br><span class="line">                    parent[W] = V; <span class="comment">/* 更新树 */</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125; <span class="comment">/* while结束*/</span></span><br><span class="line">    <span class="keyword">if</span> ( VCount &lt; Graph-&gt;Nv ) <span class="comment">/* MST中收的顶点不到|V|个 */</span></span><br><span class="line">       TotalWeight = ERROR;</span><br><span class="line">    <span class="keyword">return</span> TotalWeight;   <span class="comment">/* 算法执行完毕，返回最小权重和或错误标记 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Kruskal算法-—-将森林合并成树"><a href="#Kruskal算法-—-将森林合并成树" class="headerlink" title="Kruskal算法 — 将森林合并成树"></a>Kruskal算法 — 将森林合并成树</h3><p><img src="/2019/08/28/最小生成树/2.jpg" alt></p>
+<p><strong>伪代码</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Kruskal</span> <span class="params">( Graph G )</span></span></span><br><span class="line"><span class="function"></span>&#123; MST = &#123; &#125; ;</span><br><span class="line"><span class="keyword">while</span> ( MST 中不到 |V| <span class="number">1</span> 条边 &amp;&amp; E 中还有边 ) &#123;</span><br><span class="line">    从 E 中取一条权重最小的边 E(v,w) ;</span><br><span class="line">    将 E(v,w)从 E 中删除;</span><br><span class="line">    <span class="keyword">if</span> ( E(V,W)不在 MST 中构成回路)</span><br><span class="line">    	将 E(V,W) 加入 MST;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		彻底无视 E(V,W);</span><br><span class="line">&#125;</span><br><span class="line">	<span class="keyword">if</span> ( MST 中不到 |V| <span class="number">1</span> 条边 )</span><br><span class="line">		Error ( “生成树不存在” );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​            <strong>复杂度 **   T = O( |E| log |E| )   **适合稀疏图</strong></p>
+<p><strong>实现</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 邻接表存储 - Kruskal最小生成树算法 */</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/*-------------------- 顶点并查集定义 --------------------*/</span></span><br><span class="line"><span class="keyword">typedef</span> Vertex ElementType; <span class="comment">/* 默认元素可以用非负整数表示 */</span></span><br><span class="line"><span class="keyword">typedef</span> Vertex SetName;     <span class="comment">/* 默认用根结点的下标作为集合名称 */</span></span><br><span class="line"><span class="keyword">typedef</span> ElementType SetType[MaxVertexNum]; <span class="comment">/* 假设集合元素下标从0开始 */</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitializeVSet</span><span class="params">( SetType S, <span class="keyword">int</span> N )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 初始化并查集 */</span></span><br><span class="line">    ElementType X;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> ( X=<span class="number">0</span>; X&lt;N; X++ ) S[X] = <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">( SetType S, SetName Root1, SetName Root2 )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 这里默认Root1和Root2是不同集合的根结点 */</span></span><br><span class="line">    <span class="comment">/* 保证小集合并入大集合 */</span></span><br><span class="line">    <span class="keyword">if</span> ( S[Root2] &lt; S[Root1] ) &#123; <span class="comment">/* 如果集合2比较大 */</span></span><br><span class="line">        S[Root2] += S[Root1];     <span class="comment">/* 集合1并入集合2  */</span></span><br><span class="line">        S[Root1] = Root2;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;                         <span class="comment">/* 如果集合1比较大 */</span></span><br><span class="line">        S[Root1] += S[Root2];     <span class="comment">/* 集合2并入集合1  */</span></span><br><span class="line">        S[Root2] = Root1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function">SetName <span class="title">Find</span><span class="params">( SetType S, ElementType X )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 默认集合元素全部初始化为-1 */</span></span><br><span class="line">    <span class="keyword">if</span> ( S[X] &lt; <span class="number">0</span> ) <span class="comment">/* 找到集合的根 */</span></span><br><span class="line">        <span class="keyword">return</span> X;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> S[X] = Find( S, S[X] ); <span class="comment">/* 路径压缩 */</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">CheckCycle</span><span class="params">( SetType VSet, Vertex V1, Vertex V2 )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 检查连接V1和V2的边是否在现有的最小生成树子集中构成回路 */</span></span><br><span class="line">    Vertex Root1, Root2;</span><br><span class="line"> </span><br><span class="line">    Root1 = Find( VSet, V1 ); <span class="comment">/* 得到V1所属的连通集名称 */</span></span><br><span class="line">    Root2 = Find( VSet, V2 ); <span class="comment">/* 得到V2所属的连通集名称 */</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span>( Root1==Root2 ) <span class="comment">/* 若V1和V2已经连通，则该边不能要 */</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span> &#123; <span class="comment">/* 否则该边可以被收集，同时将V1和V2并入同一连通集 */</span></span><br><span class="line">        Union( VSet, Root1, Root2 );</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*-------------------- 并查集定义结束 --------------------*/</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/*-------------------- 边的最小堆定义 --------------------*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PercDown</span><span class="params">( Edge ESet, <span class="keyword">int</span> p, <span class="keyword">int</span> N )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 改编代码4.24的PercDown( MaxHeap H, int p )    */</span></span><br><span class="line">  <span class="comment">/* 将N个元素的边数组中以ESet[p]为根的子堆调整为关于Weight的最小堆 */</span></span><br><span class="line">    <span class="keyword">int</span> Parent, Child;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ENode</span> <span class="title">X</span>;</span></span><br><span class="line"> </span><br><span class="line">    X = ESet[p]; <span class="comment">/* 取出根结点存放的值 */</span></span><br><span class="line">    <span class="keyword">for</span>( Parent=p; (Parent*<span class="number">2</span>+<span class="number">1</span>)&lt;N; Parent=Child ) &#123;</span><br><span class="line">        Child = Parent * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>( (Child!=N<span class="number">-1</span>) &amp;&amp; (ESet[Child].Weight&gt;ESet[Child+<span class="number">1</span>].Weight) )</span><br><span class="line">            Child++;  <span class="comment">/* Child指向左右子结点的较小者 */</span></span><br><span class="line">        <span class="keyword">if</span>( X.Weight &lt;= ESet[Child].Weight ) <span class="keyword">break</span>; <span class="comment">/* 找到了合适位置 */</span></span><br><span class="line">        <span class="keyword">else</span>  <span class="comment">/* 下滤X */</span></span><br><span class="line">            ESet[Parent] = ESet[Child];</span><br><span class="line">    &#125;</span><br><span class="line">    ESet[Parent] = X;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitializeESet</span><span class="params">( LGraph Graph, Edge ESet )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 将图的边存入数组ESet，并且初始化为最小堆 */</span></span><br><span class="line">    Vertex V;</span><br><span class="line">    PtrToAdjVNode W;</span><br><span class="line">    <span class="keyword">int</span> ECount;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/* 将图的边存入数组ESet */</span></span><br><span class="line">    ECount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> ( V=<span class="number">0</span>; V&lt;Graph-&gt;Nv; V++ )</span><br><span class="line">        <span class="keyword">for</span> ( W=Graph-&gt;G[V].FirstEdge; W; W=W-&gt;Next )</span><br><span class="line">            <span class="keyword">if</span> ( V &lt; W-&gt;AdjV ) &#123; <span class="comment">/* 避免重复录入无向图的边，只收V1&lt;V2的边 */</span></span><br><span class="line">                ESet[ECount].V1 = V;</span><br><span class="line">                ESet[ECount].V2 = W-&gt;AdjV;</span><br><span class="line">                ESet[ECount++].Weight = W-&gt;Weight;</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="comment">/* 初始化为最小堆 */</span></span><br><span class="line">    <span class="keyword">for</span> ( ECount=Graph-&gt;Ne/<span class="number">2</span>; ECount&gt;=<span class="number">0</span>; ECount-- )</span><br><span class="line">        PercDown( ESet, ECount, Graph-&gt;Ne );</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetEdge</span><span class="params">( Edge ESet, <span class="keyword">int</span> CurrentSize )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 给定当前堆的大小CurrentSize，将当前最小边位置弹出并调整堆 */</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">/* 将最小边与当前堆的最后一个位置的边交换 */</span></span><br><span class="line">    Swap( &amp;ESet[<span class="number">0</span>], &amp;ESet[CurrentSize<span class="number">-1</span>]);</span><br><span class="line">    <span class="comment">/* 将剩下的边继续调整成最小堆 */</span></span><br><span class="line">    PercDown( ESet, <span class="number">0</span>, CurrentSize<span class="number">-1</span> );</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> CurrentSize<span class="number">-1</span>; <span class="comment">/* 返回最小边所在位置 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*-------------------- 最小堆定义结束 --------------------*/</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Kruskal</span><span class="params">( LGraph Graph, LGraph MST )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 将最小生成树保存为邻接表存储的图MST，返回最小权重和 */</span></span><br><span class="line">    WeightType TotalWeight;</span><br><span class="line">    <span class="keyword">int</span> ECount, NextEdge;</span><br><span class="line">    SetType VSet; <span class="comment">/* 顶点数组 */</span></span><br><span class="line">    Edge ESet;    <span class="comment">/* 边数组 */</span></span><br><span class="line"> </span><br><span class="line">    InitializeVSet( VSet, Graph-&gt;Nv ); <span class="comment">/* 初始化顶点并查集 */</span></span><br><span class="line">    ESet = (Edge)<span class="built_in">malloc</span>( <span class="keyword">sizeof</span>(struct ENode)*Graph-&gt;Ne );</span><br><span class="line">    InitializeESet( Graph, ESet ); <span class="comment">/* 初始化边的最小堆 */</span></span><br><span class="line">    <span class="comment">/* 创建包含所有顶点但没有边的图。注意用邻接表版本 */</span></span><br><span class="line">    MST = CreateGraph(Graph-&gt;Nv);</span><br><span class="line">    TotalWeight = <span class="number">0</span>; <span class="comment">/* 初始化权重和     */</span></span><br><span class="line">    ECount = <span class="number">0</span>;      <span class="comment">/* 初始化收录的边数 */</span></span><br><span class="line"> </span><br><span class="line">    NextEdge = Graph-&gt;Ne; <span class="comment">/* 原始边集的规模 */</span></span><br><span class="line">    <span class="keyword">while</span> ( ECount &lt; Graph-&gt;Nv<span class="number">-1</span> ) &#123;  <span class="comment">/* 当收集的边不足以构成树时 */</span></span><br><span class="line">        NextEdge = GetEdge( ESet, NextEdge ); <span class="comment">/* 从边集中得到最小边的位置 */</span></span><br><span class="line">        <span class="keyword">if</span> (NextEdge &lt; <span class="number">0</span>) <span class="comment">/* 边集已空 */</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="comment">/* 如果该边的加入不构成回路，即两端结点不属于同一连通集 */</span></span><br><span class="line">        <span class="keyword">if</span> ( CheckCycle( VSet, ESet[NextEdge].V1, ESet[NextEdge].V2 )==<span class="literal">true</span> ) &#123;</span><br><span class="line">            <span class="comment">/* 将该边插入MST */</span></span><br><span class="line">            InsertEdge( MST, ESet+NextEdge );</span><br><span class="line">            TotalWeight += ESet[NextEdge].Weight; <span class="comment">/* 累计权重 */</span></span><br><span class="line">            ECount++; <span class="comment">/* 生成树中边数加1 */</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ( ECount &lt; Graph-&gt;Nv<span class="number">-1</span> )</span><br><span class="line">        TotalWeight = <span class="number">-1</span>; <span class="comment">/* 设置错误标记，表示生成树不存在 */</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> TotalWeight;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/15/CompleteBinarySearchTree/" class="archive-article-date">
-  	<time datetime="2019-08-15T02:24:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/15/CompleteBinarySearchTree/">CompleteBinarySearchTree</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">树</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">递归</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">图</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -206,315 +257,103 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://Jerrymao66.github.io/2019/08/28/最小生成树/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/13/计算机系统漫游/" class="archive-article-date">
-  	<time datetime="2019-08-13T00:56:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/28/图的创建/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">图的创建</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/13/计算机系统漫游/">第一章:计算机系统漫游</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机系统//" class="article-tag-list-link color1">计算机系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/10/TreeTraversalsAgain/" class="archive-article-date">
-  	<time datetime="2019-08-10T05:25:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/10/TreeTraversalsAgain/">Tree Traversals Again</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">树</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">递归</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">分治算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/10/树的同构/" class="archive-article-date">
-  	<time datetime="2019-08-10T05:01:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/10/树的同构/">树的同构</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/10/一元多项式的乘法与加法运算/" class="archive-article-date">
-  	<time datetime="2019-08-10T03:43:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/10/一元多项式的乘法与加法运算/">一元多项式的乘法与加法运算</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">链表</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/10/最大子列和/" class="archive-article-date">
-  	<time datetime="2019-08-09T23:11:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/10/最大子列和/">最大子列和</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">分治算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">在线处理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/28/堆的简单实现/" class="archive-article-date">
-  	<time datetime="2019-07-28T08:59:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/28/堆的简单实现/">堆的简单实现</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">堆</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
   
 
 
@@ -538,8 +377,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
