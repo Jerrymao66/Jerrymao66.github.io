@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://Jerrymao66.github.io">
   <title>图的创建 | JerryMao&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用邻接矩阵表示图 1234567typedef struct GNode *PtrToGNode;struct GNode &amp;#123;        int Nv; /* 顶点数 */        int Ne; /* 边数 */        DataType Data[MaxVertexNum]; /* 存顶点的数据 */&amp;#125;;typedef PtrToGNode MGraph;">
+  <meta name="description" content="用邻接矩阵表示图 12345678typedef struct GNode *PtrToGNode;struct GNode &amp;#123;        int Nv; /* 顶点数 */        int Ne; /* 边数 */    	WeightType G[MaxVertexNum][MaxVertexNum];        DataType Data[MaxVertexNum];">
 <meta name="keywords" content="图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图的创建">
 <meta property="og:url" content="http://Jerrymao66.github.io/2019/08/28/图的创建/index.html">
 <meta property="og:site_name" content="JerryMao&#39;s Blog">
-<meta property="og:description" content="用邻接矩阵表示图 1234567typedef struct GNode *PtrToGNode;struct GNode &amp;#123;        int Nv; /* 顶点数 */        int Ne; /* 边数 */        DataType Data[MaxVertexNum]; /* 存顶点的数据 */&amp;#125;;typedef PtrToGNode MGraph;">
+<meta property="og:description" content="用邻接矩阵表示图 12345678typedef struct GNode *PtrToGNode;struct GNode &amp;#123;        int Nv; /* 顶点数 */        int Ne; /* 边数 */    	WeightType G[MaxVertexNum][MaxVertexNum];        DataType Data[MaxVertexNum];">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/08/28/图的创建/1.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/08/28/图的创建/2.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/08/28/图的创建/3.jpg">
-<meta property="og:updated_time" content="2019-08-28T11:17:17.525Z">
+<meta property="og:updated_time" content="2019-09-01T07:33:16.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图的创建">
-<meta name="twitter:description" content="用邻接矩阵表示图 1234567typedef struct GNode *PtrToGNode;struct GNode &amp;#123;        int Nv; /* 顶点数 */        int Ne; /* 边数 */        DataType Data[MaxVertexNum]; /* 存顶点的数据 */&amp;#125;;typedef PtrToGNode MGraph;">
+<meta name="twitter:description" content="用邻接矩阵表示图 12345678typedef struct GNode *PtrToGNode;struct GNode &amp;#123;        int Nv; /* 顶点数 */        int Ne; /* 边数 */    	WeightType G[MaxVertexNum][MaxVertexNum];        DataType Data[MaxVertexNum];">
 <meta name="twitter:image" content="http://jerrymao66.github.io/2019/08/28/图的创建/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="JerryMao&#39;s Blog" type="application/atom+xml">
@@ -178,7 +178,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="用邻接矩阵表示图"><a href="#用邻接矩阵表示图" class="headerlink" title="用邻接矩阵表示图"></a>用邻接矩阵表示图</h3><p><img src="/2019/08/28/图的创建/1.jpg" alt></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">GNode</span> *<span class="title">PtrToGNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GNode</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> Nv; <span class="comment">/* 顶点数 */</span></span><br><span class="line">        <span class="keyword">int</span> Ne; <span class="comment">/* 边数 */</span></span><br><span class="line">        DataType Data[MaxVertexNum]; <span class="comment">/* 存顶点的数据 */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToGNode MGraph; <span class="comment">/* 以邻接矩阵存储的图类型 */</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">GNode</span> *<span class="title">PtrToGNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GNode</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> Nv; <span class="comment">/* 顶点数 */</span></span><br><span class="line">        <span class="keyword">int</span> Ne; <span class="comment">/* 边数 */</span></span><br><span class="line">    	WeightType G[MaxVertexNum][MaxVertexNum];</span><br><span class="line">        DataType Data[MaxVertexNum]; <span class="comment">/* 存顶点的数据 */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToGNode MGraph; <span class="comment">/* 以邻接矩阵存储的图类型 */</span></span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
 
