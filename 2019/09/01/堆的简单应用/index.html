@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://jerrymao66.github.io/2019/09/01/堆的简单应用/1.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/09/01/堆的简单应用/2.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/09/01/堆的简单应用/3.jpg">
-<meta property="og:updated_time" content="2019-09-01T07:50:04.259Z">
+<meta property="og:updated_time" content="2019-09-01T09:14:39.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="堆的简单应用">
 <meta name="twitter:description" content="什么是堆优先队列（Priority Queue）：特殊的“队列”，取出元素的顺序是依照元素的优先权（关键字）大小，而不是元素进入队列的先后顺序。优先队列的完全二叉树表示">
@@ -187,7 +187,8 @@
 <pre><code>* “最大堆(MaxHeap)”,也称“大顶堆”：最大值
 * “最小堆(MinHeap)”,也称“小顶堆” ：最小值</code></pre></li>
 </ul>
-<h4 id="在最大堆中插入一个新元素"><a href="#在最大堆中插入一个新元素" class="headerlink" title="在最大堆中插入一个新元素"></a>在最大堆中插入一个新元素</h4><pre><code>**方法：**在最后添加一个结点，如果插入元素比根结点大就把根结点向下过滤，直到找到合适位置插入</code></pre><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">( MaxHeap H, ElementType item )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 将元素item 插入最大堆H，其中H-&gt;Elements[0]已经定义为哨兵 */</span></span><br><span class="line">     <span class="keyword">int</span> i;</span><br><span class="line">     <span class="keyword">if</span> ( IsFull(H) ) &#123;</span><br><span class="line">         <span class="built_in">printf</span>(<span class="string">"最大堆已满"</span>);</span><br><span class="line">         <span class="keyword">return</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     i = ++H-&gt;Size; <span class="comment">/* i指向插入后堆中的最后一个元素的位置 */</span></span><br><span class="line">     <span class="keyword">for</span> ( ; H-&gt;Elements[i/<span class="number">2</span>] &lt; item; i/=<span class="number">2</span> )</span><br><span class="line">    		 H-&gt;Elements[i] = H-&gt;Elements[i/<span class="number">2</span>]; <span class="comment">/* 向下过滤结点 */</span></span><br><span class="line">     H-&gt;Elements[i] = item; <span class="comment">/* 将item 插入 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在最大堆中插入一个新元素"><a href="#在最大堆中插入一个新元素" class="headerlink" title="在最大堆中插入一个新元素"></a>在最大堆中插入一个新元素</h4><p> <strong>方法：</strong>  在最后添加一个结点，如果插入元素比根结点大就把根结点向下过滤，直到找到合适位置插入</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">( MaxHeap H, ElementType item )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 将元素item 插入最大堆H，其中H-&gt;Elements[0]已经定义为哨兵 */</span></span><br><span class="line">     <span class="keyword">int</span> i;</span><br><span class="line">     <span class="keyword">if</span> ( IsFull(H) ) &#123;</span><br><span class="line">         <span class="built_in">printf</span>(<span class="string">"最大堆已满"</span>);</span><br><span class="line">         <span class="keyword">return</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     i = ++H-&gt;Size; <span class="comment">/* i指向插入后堆中的最后一个元素的位置 */</span></span><br><span class="line">     <span class="keyword">for</span> ( ; H-&gt;Elements[i/<span class="number">2</span>] &lt; item; i/=<span class="number">2</span> )</span><br><span class="line">    		 H-&gt;Elements[i] = H-&gt;Elements[i/<span class="number">2</span>]; <span class="comment">/* 向下过滤结点 */</span></span><br><span class="line">     H-&gt;Elements[i] = item; <span class="comment">/* 将item 插入 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="在最大堆中删除一个元素"><a href="#在最大堆中删除一个元素" class="headerlink" title="在最大堆中删除一个元素"></a>在最大堆中删除一个元素</h4><p> <strong>方法：</strong> </p>
 <ol>
@@ -368,6 +369,22 @@
   
 
   
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://Jerrymao66.github.io/2019/09/01/堆的简单应用/",
+  owner: 'Jerrymao66',
+  repo: 'Jerrymao66.github.io',
+  oauth: {
+    client_id: '437b6819a9159b4537b0',
+    client_secret: '966a1cbce89faf071bfea2eab6b37f5eede4c54b',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -464,6 +481,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分治算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
@@ -473,10 +494,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">图的遍历</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分治算法</a>
               </li>
              
               <li class="article-tag-list-item">
