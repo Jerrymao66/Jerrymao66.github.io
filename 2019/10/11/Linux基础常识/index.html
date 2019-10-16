@@ -20,16 +20,10 @@
 <meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/2.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/3.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/4.jpg">
-<meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/6.jpg">
-<meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/7.jpg">
-<meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/8.jpg">
-<meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/9.jpg">
-<meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/10.jpg">
-<meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/11.jpg">
-<meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/12.jpg">
+<meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/5.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/13.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/10/11/Linux基础常识/14.jpg">
-<meta property="og:updated_time" content="2019-10-12T13:45:54.698Z">
+<meta property="og:updated_time" content="2019-10-16T06:37:52.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux基础知识(一)">
 <meta name="twitter:description" content="Linux中命令分为内部命令和外部命令可以通过 type 命令查看命令类型  后面带/sbin/ifconfig这样路径的是外部命令 可以通过man [command]  来查看外部命令">
@@ -219,30 +213,12 @@
 <p>通过man utf-8 查看发现以下规律，<strong>以0开头的采用ASCII编码 只接转换成对应字符</strong></p>
 <p>以1开头的表示特殊字符可能是中文，有多少个1表示用多少个字节表示，去掉前面标识符把每位相加在utf-8中找字符</p>
 <p><img src="/2019/10/11/Linux基础常识/4.jpg" alt></p>
-<h4 id="查看磁盘使用情况"><a href="#查看磁盘使用情况" class="headerlink" title="查看磁盘使用情况"></a>查看磁盘使用情况</h4><figure class="highlight plain"><figcaption><span>-h``` 查看磁盘情况</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![](/Linux基础常识/5.jpg)</span><br><span class="line"></span><br><span class="line">```du -sh [文件名]</span><br></pre></td></tr></table></figure>
+<h4 id="查看磁盘使用情况"><a href="#查看磁盘使用情况" class="headerlink" title="查看磁盘使用情况"></a>查看磁盘使用情况</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
 
-<p>-s 求和总大小 不加文件名 求当前目录总和  -h 转化为可读加上单位</p>
-<p><code>du -sh ./*</code>  查看当前目录下所有文件占用存储情况</p>
-<p><img src="/2019/10/11/Linux基础常识/6.jpg" alt></p>
-<h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p>默认的硬链接，相当于java中两个变量同时引用一个对象，同时引用数量加一，inode也一致</p>
-<p><img src="/2019/10/11/Linux基础常识/7.jpg" alt></p>
-<p><strong>删除硬链接</strong></p>
-<p><img src="/2019/10/11/Linux基础常识/8.jpg" alt></p>
-<p>​        <strong>可以看到inode没变，删除的只是一个引用这时还能继续查看文件内容</strong></p>
-<p><strong>软链接</strong></p>
-<p><img src="/2019/10/11/Linux基础常识/9.jpg" alt></p>
-<p>inode不一样</p>
-<p>删除原文件 报错</p>
-<p><img src="/2019/10/11/Linux基础常识/10.jpg" alt></p>
-<h4 id="查看文件属性"><a href="#查看文件属性" class="headerlink" title="查看文件属性"></a>查看文件属性</h4><p><img src="/2019/10/11/Linux基础常识/11.jpg" alt></p>
-<p><strong>modify</strong>  文件内容最后更改时间</p>
-<p><strong>change</strong> 文件的元数据（属性）最后改变 时间（内容改变也算元数据改变，文件权限）</p>
-<h4 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h4><p>| 表示管道</p>
-<p><strong>管道前面的命令要有输出流，管道后面的命令要有输入流</strong></p>
-<p>例如：<code>head -4 /etc/profile| tail -1</code></p>
-<p><img src="/2019/10/11/Linux基础常识/12.jpg" alt></p>
-<p>管道前命令将前四行输出，管道后命令将前面的变为输入流读入 最后显示文件的第四行数据。</p>
-<p>例如：<code>echo &quot;/&quot; | ls -l</code></p>
+<p> 查看磁盘情况</p>
+<p><img src="/2019/10/11/Linux基础常识/5.jpg" alt></p>
+<figure class="highlight plain"><figcaption><span>-sh [文件名]```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-s 求和总大小 不加文件名 求当前目录总和  -h 转化为可读加上单位</span><br><span class="line"></span><br><span class="line">`du -sh ./*`  查看当前目录下所有文件占用存储情况</span><br><span class="line"></span><br><span class="line">![](/Linux基础常识/6.jpg)</span><br><span class="line"></span><br><span class="line">#### 链接</span><br><span class="line"></span><br><span class="line">默认的硬链接，相当于java中两个变量同时引用一个对象，同时引用数量加一，inode也一致</span><br><span class="line"></span><br><span class="line">![](/Linux基础常识/7.jpg)</span><br><span class="line"></span><br><span class="line">**删除硬链接**</span><br><span class="line"></span><br><span class="line">![](/Linux基础常识/8.jpg)</span><br><span class="line"></span><br><span class="line">​		**可以看到inode没变，删除的只是一个引用这时还能继续查看文件内容**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**软链接**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">![](/Linux基础常识/9.jpg)</span><br><span class="line"></span><br><span class="line">inode不一样</span><br><span class="line"></span><br><span class="line">删除原文件 报错</span><br><span class="line"></span><br><span class="line">![](/Linux基础常识/10.jpg)</span><br><span class="line"></span><br><span class="line">#### 查看文件属性</span><br><span class="line"></span><br><span class="line">![](/Linux基础常识/11.jpg)</span><br><span class="line"></span><br><span class="line">**modify**  文件内容最后更改时间</span><br><span class="line"></span><br><span class="line">**change** 文件的元数据（属性）最后改变 时间（内容改变也算元数据改变，文件权限）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 管道</span><br><span class="line"></span><br><span class="line">| 表示管道</span><br><span class="line"></span><br><span class="line">**管道前面的命令要有输出流，管道后面的命令要有输入流**</span><br><span class="line"></span><br><span class="line">例如：`head -4 /etc/profile| tail -1`</span><br><span class="line"></span><br><span class="line">![](/Linux基础常识/12.jpg)</span><br><span class="line"></span><br><span class="line">管道前命令将前四行输出，管道后命令将前面的变为输入流读入 最后显示文件的第四行数据。</span><br><span class="line"></span><br><span class="line">例如：```echo &quot;/&quot; | ls -l</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2019/10/11/Linux基础常识/13.jpg" alt></p>
 <p><strong>本来想将输出/下的所有文件信息，结果却输出当前目录下的文件信息，这时因为ls 没有输入流，相当于 **              **ls -l /etc  接收的是参数而不是输入流所以不行</strong></p>
 <p><code>echo &quot;/&quot; |xargs ls -l</code>这样就行了</p>
@@ -537,11 +513,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hadoop</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态代理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态代理</a>
+                <a href="javascript:void(0)" class="js-tag color2">hadoop</a>
               </li>
              
               <li class="article-tag-list-item">
