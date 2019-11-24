@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/09/26/Vue知识点/1.png">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/09/26/Vue知识点/2.gif">
-<meta property="og:updated_time" content="2019-09-26T05:24:49.174Z">
+<meta property="og:updated_time" content="2019-11-19T04:14:53.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue知识点">
 <meta name="twitter:description" content="vue声明式渲染然后我们通过Vue进行渲染：">
@@ -212,7 +212,7 @@
 <li>methods</li>
 </ul>
 <p>等等</p>
-<h2 id="模板或元素"><a href="#模板或元素" class="headerlink" title="模板或元素"></a>模板或元素</h2><p>每个Vue实例都需要关联一段Html模板，Vue会基于此模板进行视图渲染。</p>
+<h3 id="模板或元素"><a href="#模板或元素" class="headerlink" title="模板或元素"></a>模板或元素</h3><p>每个Vue实例都需要关联一段Html模板，Vue会基于此模板进行视图渲染。</p>
 <p>我们可以通过el属性来指定。</p>
 <p>例如一段html模板：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -221,7 +221,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">	el:<span class="string">"#app"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>这样，Vue就可以基于id为<code>app</code>的div元素作为模板进行渲染了。<strong>在这个div范围以外的部分是无法使用vue特性的。</strong></p>
-<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>当Vue实例被创建时，它会尝试获取在data中定义的所有属性，用于视图的渲染，并且监视data中的属性变化，当data发生改变，所有相关的视图都将重新渲染，这就是“响应式“系统。</p>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><p>当Vue实例被创建时，它会尝试获取在data中定义的所有属性，用于视图的渲染，并且监视data中的属性变化，当data发生改变，所有相关的视图都将重新渲染，这就是“响应式“系统。</p>
 <p>html：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -232,14 +232,14 @@
 <li>name的变化会影响到<code>input</code>的值</li>
 <li>input中输入的值，也会导致vm中的name发生改变</li>
 </ul>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>Vue实例中除了可以定义data属性，也可以定义方法，并且在Vue实例的作用范围内使用。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>Vue实例中除了可以定义data属性，也可以定义方法，并且在Vue实例的作用范围内使用。</p>
 <p>html:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    &#123;&#123;num&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"add"</span>&gt;</span>加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>js:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app"</span>,</span><br><span class="line">    data:&#123;</span><br><span class="line">        num: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        add:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">// this代表的当前vue实例</span></span><br><span class="line">            <span class="keyword">this</span>.num++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p>什么是指令？</p>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><p>什么是指令？</p>
 <p>指令 (Directives) 是带有 <code>v-</code> 前缀的特殊特性。指令特性的预期值是：<strong>单个 JavaScript 表达式</strong>。指令的职责是，当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM。 </p>
 <p>例如我们在入门案例中的v-on，代表绑定事件。</p>
 <h3 id="花括号"><a href="#花括号" class="headerlink" title="花括号"></a>花括号</h3><p>格式：</p>
@@ -251,7 +251,7 @@
 <li>表达式必须有返回结果。例如 1 + 1，没有结果的表达式不允许使用，如：var a = 1 + 1;</li>
 <li>可以直接获取Vue实例中定义的数据或函数</li>
 </ul>
-<h2 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h2><p>刚才的v-text和v-html可以看做是单向绑定，数据影响了视图渲染，但是反过来就不行。接下来学习的v-model是双向绑定，视图（View）和模型（Model）之间会互相影响。</p>
+<h3 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h3><p>刚才的v-text和v-html可以看做是单向绑定，数据影响了视图渲染，但是反过来就不行。接下来学习的v-model是双向绑定，视图（View）和模型（Model）之间会互相影响。</p>
 <p>既然是双向绑定，一定是在视图中可以修改数据，这样就限定了视图的元素类型。目前v-model的可使用元素有：</p>
 <ul>
 <li>input</li>
@@ -272,7 +272,7 @@
 <li><code>text</code> 和<code>textarea</code> 默认对应的model是字符串</li>
 <li><code>select</code>单选对应字符串，多选对应也是数组</li>
 </ul>
-<h2 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h2><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>v-on指令用于给页面元素绑定事件。</p>
+<h3 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>v-on指令用于给页面元素绑定事件。</p>
 <p>语法：<strong>v-on:事件名=”js片段或函数名”</strong></p>
 <h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h3><p>在事件处理程序中调用 <code>event.preventDefault()</code> 或 <code>event.stopPropagation()</code> 是非常常见的需求。尽管我们可以在方法中轻松实现这点，但更好的方式是：方法只有纯粹的数据逻辑，而不是去处理 DOM 事件细节。</p>
 <p>为了解决这个问题，Vue.js 为 <code>v-on</code> 提供了<strong>事件修饰符</strong>。修饰符是由点开头的指令后缀来表示的。</p>
@@ -300,11 +300,11 @@
 </blockquote>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"(user, index) in users"</span>&gt;</span></span><br><span class="line">        &#123;&#123;index + 1&#125;&#125;. &#123;&#123;user.name&#125;&#125; - &#123;&#123;user.gender&#125;&#125; - &#123;&#123;user.age&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h2><p>html属性不能使用双大括号形式绑定，只能使用v-bind指令。</p>
+<h3 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h3><p>html属性不能使用双大括号形式绑定，只能使用v-bind指令。</p>
 <p>在将 <code>v-bind</code> 用于 <code>class</code> 和 <code>style</code> 时，Vue.js 做了专门的增强。表达式结果的类型除了字符串之外，还可以是对象或数组。 </p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--可以是数据模型，可以是具有返回值的js代码块或者函数--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:title</span>=<span class="string">"title"</span> <span class="attr">style</span>=<span class="string">"border: 1px solid red; width: 50px; height: 50px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        el: <span class="string">"#app"</span>,</span></span><br><span class="line">        data: &#123;</span><br><span class="line"><span class="javascript">            title: <span class="string">"title"</span>,</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="全局组件"><a href="#全局组件" class="headerlink" title="全局组件"></a>全局组件</h2><p>我们通过Vue的component方法来定义一个全局组件。</p>
+<h3 id="全局组件"><a href="#全局组件" class="headerlink" title="全局组件"></a>全局组件</h3><p>我们通过Vue的component方法来定义一个全局组件。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--使用定义好的全局组件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">counter</span>&gt;</span><span class="tag">&lt;/<span class="name">counter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 定义全局组件，两个参数：1，组件名称。2，组件参数</span></span></span><br><span class="line"><span class="javascript">    Vue.component(<span class="string">"counter"</span>,&#123;</span></span><br><span class="line"><span class="xml">        template:'<span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"count++"</span>&gt;</span>你点了我 &#123;&#123; count &#125;&#125; 次，我记住了.<span class="tag">&lt;/<span class="name">button</span>&gt;</span>',</span></span><br><span class="line">        data()&#123;</span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> &#123;</span></span><br><span class="line">                count:0</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        el:<span class="string">"#app"</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -314,7 +314,7 @@
 <li>全局组件定义完毕，任何vue实例都可以直接在HTML中通过组件名称来使用组件了。</li>
 <li>data必须是一个函数，不再是一个对象。</li>
 </ul>
-<h2 id="局部组件"><a href="#局部组件" class="headerlink" title="局部组件"></a>局部组件</h2><p>一旦全局注册，就意味着即便以后你不再使用这个组件，它依然会随着Vue的加载而加载。</p>
+<h3 id="局部组件"><a href="#局部组件" class="headerlink" title="局部组件"></a>局部组件</h3><p>一旦全局注册，就意味着即便以后你不再使用这个组件，它依然会随着Vue的加载而加载。</p>
 <p>因此，对于一些并不频繁使用的组件，我们会采用局部注册。</p>
 <p>我们先在外部定义一个对象，结构与创建组件时传递的第二个参数一致：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> counter = &#123;</span><br><span class="line">    template:<span class="string">'&lt;button v-on:click="count++"&gt;你点了我 &#123;&#123; count &#125;&#125; 次，我记住了.&lt;/button&gt;'</span>,</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            count:<span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -624,10 +624,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">javaweb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
@@ -636,11 +632,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+                <a href="javascript:void(0)" class="js-tag color3">javaweb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,7 +644,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hive</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">MapReduce</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,7 +668,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">分治算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hbase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -668,15 +684,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分治算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,11 +696,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">在线处理</a>
+                <a href="javascript:void(0)" class="js-tag color2">堆</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">堆</a>
+                <a href="javascript:void(0)" class="js-tag color5">在线处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -709,10 +717,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hive</a>
               </li>
             
             <div class="clearfix"></div>

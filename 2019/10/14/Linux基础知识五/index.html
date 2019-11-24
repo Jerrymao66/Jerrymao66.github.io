@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://jerrymao66.github.io/2019/10/14/Linux基础知识五/13.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/10/14/Linux基础知识五/14.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/10/14/Linux基础知识五/15.jpg">
-<meta property="og:updated_time" content="2019-10-15T23:17:14.337Z">
+<meta property="og:updated_time" content="2019-11-16T04:51:12.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux基础知识五">
 <meta name="twitter:description" content="shellscript（一） shell  bash  –解释器，启动器  –解释器：  用户交互输入（登录后的bash，输一个执行一个）   文本文件输入 （写的脚本文件）">
@@ -243,7 +243,7 @@
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /usr /god 1&gt;ls3.out 2&gt;ls3.out <span class="comment">#将正确和错误输出到相同的文件中</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>因为注意程序是先报错后输出正确的，而且用的是&gt;,所以ls3.out只会有正确的输出，要想追加改为&gt;&gt;</strong></p>
+<p><strong>因为注意程序是先输出标准错误输出流2，后输出正确的，而且用的是&gt;,所以ls3.out只会有正确的输出，要想追加改为&gt;&gt;</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /usr /god 2&gt;&amp;1 1&gt;ls4.out <span class="comment">#将2指向1，再将1指向ls4指向文件描述符需要加&amp;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>看起来虽然是对的，但是重定向是从左到右执行，所以一开始1指向的是屏幕，而2指向1就指向屏幕，然后1在指向ls4.out,所以要想正确操作就把顺序换一下，操作类似在文件末尾添加</strong></p>
@@ -276,7 +276,7 @@
 <h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p><img src="/2019/10/14/Linux基础知识五/15.jpg" alt></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span> ls -l /root <span class="comment">#用ls -l /root 替代这个shell也就是执行完ls后会退出当前bash，可以用pstree查看</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>执行exec bash 会将ls 的二进制文件压到代码段中replace，然后cpu执行ls代码，因为ls代码最后会有一个退出，所以会退出当前进程，如果是xshel中的主bash，就会退出连接</strong></p>
+<p><strong>执行exec  command会将ls 的二进制文件压到代码段中replace，然后cpu执行ls代码，因为ls代码最后会有一个退出，所以会退出当前进程，如果是xshell中的主bash，就会退出连接</strong></p>
 <p><strong>因为文件描述符 不是命令 所以可以用exec对文件描述符进行重定向</strong></p>
 
       
@@ -531,10 +531,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">javaweb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
@@ -543,11 +539,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+                <a href="javascript:void(0)" class="js-tag color3">javaweb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,7 +551,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hive</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">MapReduce</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,7 +575,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">分治算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hbase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,15 +591,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分治算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,11 +603,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">在线处理</a>
+                <a href="javascript:void(0)" class="js-tag color2">堆</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">堆</a>
+                <a href="javascript:void(0)" class="js-tag color5">在线处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,10 +624,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hive</a>
               </li>
             
             <div class="clearfix"></div>

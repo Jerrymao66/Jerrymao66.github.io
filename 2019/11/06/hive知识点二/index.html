@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://Jerrymao66.github.io">
-  <title>hive知识点二 | JerryMao&#39;s Blog</title>
+  <title>hive知识点梳理(二) | JerryMao&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Hive 动态分区 hive 动态分区 ​    —开启支持动态分区  set hive.exec.dynamic.partition=true; ​    默认：true">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hive知识点二">
+<meta property="og:title" content="hive知识点梳理(二)">
 <meta property="og:url" content="http://Jerrymao66.github.io/2019/11/06/hive知识点二/index.html">
 <meta property="og:site_name" content="JerryMao&#39;s Blog">
 <meta property="og:description" content="Hive 动态分区 hive 动态分区 ​    —开启支持动态分区  set hive.exec.dynamic.partition=true; ​    默认：true">
@@ -20,9 +20,9 @@
 <meta property="og:image" content="http://jerrymao66.github.io/2019/11/06/hive知识点二/3.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/11/06/hive知识点二/4.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2019/11/06/hive知识点二/5.jpg">
-<meta property="og:updated_time" content="2019-11-07T04:15:21.507Z">
+<meta property="og:updated_time" content="2019-11-11T11:08:09.040Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hive知识点二">
+<meta name="twitter:title" content="hive知识点梳理(二)">
 <meta name="twitter:description" content="Hive 动态分区 hive 动态分区 ​    —开启支持动态分区  set hive.exec.dynamic.partition=true; ​    默认：true">
 <meta name="twitter:image" content="http://jerrymao66.github.io/2019/11/06/hive知识点二/1.jpg">
   
@@ -165,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hive知识点二
+      hive知识点梳理(二)
     </h1>
   
 
@@ -428,15 +428,15 @@
 <li><p>相关配置参数：</p>
 <ul>
 <li><p>hive.groupby.mapaggr.checkinterval： </p>
-<pre><code>* -map端group by执行聚合时处理的多少行数据（默认：100000）</code></pre></li>
+<pre><code>-map端group by执行聚合时处理的多少行数据（默认：100000）</code></pre></li>
 <li><p>hive.map.aggr.hash.min.reduction： </p>
-<pre><code>* 进行聚合的最小比例（预先对100000条数据做聚合，若聚合之后的数据量/100000的值大于该配置0.5，则不会聚合）</code></pre></li>
+<pre><code>进行聚合的最小比例（预先对100000条数据做聚合，若聚合之后的数据量/100000的值大于该配置0.5，则不会聚合）</code></pre></li>
 <li><p>hive.map.aggr.hash.percentmemory： </p>
-<pre><code>* map端聚合使用的内存的最大值</code></pre></li>
+<pre><code>map端聚合使用的内存的最大值</code></pre></li>
 <li><p>hive.map.aggr.hash.force.flush.memory.threshold： </p>
-<pre><code>* map端做聚合操作是hash表的最大可用内容，大于该值则会触发flush</code></pre></li>
+<pre><code>map端做聚合操作是hash表的最大可用内容，大于该值则会触发flush</code></pre></li>
 <li><p><strong>hive.groupby.skewindata</strong></p>
-<pre><code>* **是否对GroupBy产生的数据倾斜做优化，默认为false**</code></pre></li>
+<pre><code>**是否对GroupBy产生的数据倾斜做优化，默认为false**</code></pre></li>
 </ul>
 </li>
 </ul>
@@ -604,6 +604,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/11/11/hbase知识点梳理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          hbase知识点梳理
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/11/05/hive知识点梳理/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">hive知识点梳理(一)</div>
@@ -744,10 +753,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">javaweb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
@@ -756,11 +761,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+                <a href="javascript:void(0)" class="js-tag color3">javaweb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -768,7 +773,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hive</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">MapReduce</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -780,7 +797,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">分治算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hbase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -788,15 +813,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分治算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态代理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,11 +825,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">在线处理</a>
+                <a href="javascript:void(0)" class="js-tag color2">堆</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">堆</a>
+                <a href="javascript:void(0)" class="js-tag color5">在线处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -829,10 +846,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hive</a>
               </li>
             
             <div class="clearfix"></div>
