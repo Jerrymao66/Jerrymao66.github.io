@@ -8,23 +8,23 @@
   <link rel="dns-prefetch" href="http://Jerrymao66.github.io">
   <title>CompletableFuture的简单使用 | JerryMao&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.使用Future以异步的方式执行一个耗时的操作 2.使用java8CompletableFuture 3.使用工厂方法supplyAsync创建CompletableFuture对象 ​       supplyAsync方法接受一个生产者（ Supplier）作为参数，返回一个CompletableFuture对象，该对象完成异步执行后会读取调用生产者方法的返回值。生产者方法会交由ForkJ">
+  <meta name="description" content="1.使用Future以异步的方式执行一个耗时的操作">
 <meta name="keywords" content="java8">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CompletableFuture的简单使用">
 <meta property="og:url" content="http://Jerrymao66.github.io/2020/07/07/CompletableFuture的使用/index.html">
 <meta property="og:site_name" content="JerryMao&#39;s Blog">
-<meta property="og:description" content="1.使用Future以异步的方式执行一个耗时的操作 2.使用java8CompletableFuture 3.使用工厂方法supplyAsync创建CompletableFuture对象 ​       supplyAsync方法接受一个生产者（ Supplier）作为参数，返回一个CompletableFuture对象，该对象完成异步执行后会读取调用生产者方法的返回值。生产者方法会交由ForkJ">
+<meta property="og:description" content="1.使用Future以异步的方式执行一个耗时的操作">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://jerrymao66.github.io/2020/07/07/CompletableFuture的使用/1.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2020/07/07/CompletableFuture的使用/2.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2020/07/07/CompletableFuture的使用/3.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2020/07/07/CompletableFuture的使用/4.jpg">
 <meta property="og:image" content="http://jerrymao66.github.io/2020/07/07/CompletableFuture的使用/5.jpg">
-<meta property="og:updated_time" content="2021-03-05T01:15:00.684Z">
+<meta property="og:updated_time" content="2021-03-05T01:18:04.294Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CompletableFuture的简单使用">
-<meta name="twitter:description" content="1.使用Future以异步的方式执行一个耗时的操作 2.使用java8CompletableFuture 3.使用工厂方法supplyAsync创建CompletableFuture对象 ​       supplyAsync方法接受一个生产者（ Supplier）作为参数，返回一个CompletableFuture对象，该对象完成异步执行后会读取调用生产者方法的返回值。生产者方法会交由ForkJ">
+<meta name="twitter:description" content="1.使用Future以异步的方式执行一个耗时的操作">
 <meta name="twitter:image" content="http://jerrymao66.github.io/2020/07/07/CompletableFuture的使用/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="JerryMao&#39;s Blog" type="application/atom+xml">
@@ -180,6 +180,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="1-使用Future以异步的方式执行一个耗时的操作"><a href="#1-使用Future以异步的方式执行一个耗时的操作" class="headerlink" title="1.使用Future以异步的方式执行一个耗时的操作"></a>1.使用Future以异步的方式执行一个耗时的操作</h1><p><img src="/2020/07/07/CompletableFuture的使用/1.jpg" alt></p>
+<a id="more"></a>
+
 <h1 id="2-使用java8CompletableFuture"><a href="#2-使用java8CompletableFuture" class="headerlink" title="2.使用java8CompletableFuture"></a>2.使用java8CompletableFuture</h1><p><img src="/2020/07/07/CompletableFuture的使用/2.jpg" alt></p>
 <h1 id="3-使用工厂方法supplyAsync创建CompletableFuture对象"><a href="#3-使用工厂方法supplyAsync创建CompletableFuture对象" class="headerlink" title="3.使用工厂方法supplyAsync创建CompletableFuture对象"></a>3.使用工厂方法supplyAsync创建CompletableFuture对象</h1><p><img src="/2020/07/07/CompletableFuture的使用/3.jpg" alt></p>
 <p>​       supplyAsync方法接受一个生产者（ Supplier）作为参数，返回一个CompletableFuture对象，该对象完成异步执行后会读取调用生产者方法的返回值。生产者方法会交由ForkJoinPool池中的某个执行线程（ Executor）运行，但是你也可以使用supplyAsync方法的重载版本，传递第二个参数指定不同的执行线程执行生产者方法。  </p>
@@ -460,15 +462,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hadoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hive</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hadoop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,11 +498,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hbase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态代理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hbase</a>
+                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,19 +514,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">链表</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">最短路径</a>
+                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
+                <a href="javascript:void(0)" class="js-tag color5">最短路径</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,7 +534,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,7 +542,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
