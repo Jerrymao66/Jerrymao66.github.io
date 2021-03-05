@@ -150,6 +150,608 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-位运算-异或性质" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/18/位运算-异或性质/">位运算-异或性质</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/18/位运算-异或性质/" class="archive-article-date">
+  	<time datetime="2020-07-18T11:44:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1、位操作用途"><a href="#1、位操作用途" class="headerlink" title="1、位操作用途"></a>1、位操作用途</h3><ul>
+<li><p>一个数 &amp;1  就是二进制的最末位   1就是奇，0就是偶     ：用于取数    &amp;111  就是取三位；</p>
+</li>
+<li><p>一个数 | 1 就是把二进制的最末位  强行变1          ：用于赋值      |100   就是把第三位赋值为1；</p>
+</li>
+<li><p>一个数  ^ 1   就是检验最后一位是否相同             ：相同返回1，不同返回0；</p>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2020/07/18/位运算-异或性质/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">位运算</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/18/位运算-异或性质/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-CompletableFuture的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/07/CompletableFuture的使用/">CompletableFuture的简单使用</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/07/CompletableFuture的使用/" class="archive-article-date">
+  	<time datetime="2020-07-07T13:48:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-使用Future以异步的方式执行一个耗时的操作"><a href="#1-使用Future以异步的方式执行一个耗时的操作" class="headerlink" title="1.使用Future以异步的方式执行一个耗时的操作"></a>1.使用Future以异步的方式执行一个耗时的操作</h1><p><img src="/2020/07/07/CompletableFuture的使用/1.jpg" alt></p>
+<h1 id="2-使用java8CompletableFuture"><a href="#2-使用java8CompletableFuture" class="headerlink" title="2.使用java8CompletableFuture"></a>2.使用java8CompletableFuture</h1><p><img src="/2020/07/07/CompletableFuture的使用/2.jpg" alt></p>
+<h1 id="3-使用工厂方法supplyAsync创建CompletableFuture对象"><a href="#3-使用工厂方法supplyAsync创建CompletableFuture对象" class="headerlink" title="3.使用工厂方法supplyAsync创建CompletableFuture对象"></a>3.使用工厂方法supplyAsync创建CompletableFuture对象</h1><p><img src="/2020/07/07/CompletableFuture的使用/3.jpg" alt></p>
+<p>​       supplyAsync方法接受一个生产者（ Supplier）作为参数，返回一个CompletableFuture对象，该对象完成异步执行后会读取调用生产者方法的返回值。生产者方法会交由ForkJoinPool池中的某个执行线程（ Executor）运行，但是你也可以使用supplyAsync方法的重载版本，传递第二个参数指定不同的执行线程执行生产者方法。  </p>
+<h1 id="4-使用CompletableFuture实现findPrices方法"><a href="#4-使用CompletableFuture实现findPrices方法" class="headerlink" title="4.使用CompletableFuture实现findPrices方法"></a>4.使用CompletableFuture实现findPrices方法</h1><p><img src="/2020/07/07/CompletableFuture的使用/4.jpg" alt></p>
+<p>​       这里使用了两个不同的Stream流水线，而不是在同一个处理流的流水线上一个接一个地放置两个map操作——这其实是有缘由的。考虑流操作之间的延迟特性，如果你在单一流水线中处理流，发向不同商家的请求只能以同步、顺序执行的方式才会成功。因此，每个创建CompletableFuture对象只能在前一个操作结束之后执行查询指定商家的动作、通知join方法返回计算结果。图11-4解释了这些重要的细节。 </p>
+<p> <img src="/2020/07/07/CompletableFuture的使用/5.jpg" alt></p>
+<p><strong>参考 Java8实战</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">java8</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/07/CompletableFuture的使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-锁的演示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/01/锁的演示/">锁的演示</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/01/锁的演示/" class="archive-article-date">
+  	<time datetime="2020-07-01T02:56:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1、标准访问先打印qq还是微信"><a href="#1、标准访问先打印qq还是微信" class="headerlink" title="1、标准访问先打印qq还是微信"></a>1、标准访问先打印qq还是微信</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">sendWchat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Wchat------"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">sendQQ</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"QQ--------"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Phone phone = <span class="keyword">new</span> Phone();</span><br><span class="line">        <span class="keyword">new</span> Thread(phone::sendWchat,<span class="string">"A"</span>).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(phone::sendQQ,<span class="string">"B"</span>).start();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>结论：都有可能，看谁先抢到资源</strong></p>
+<p>注意：当A线程先访问了类中的任一个同步方法，其他线程不能<strong>同时</strong>访问这个类的所有同步方法，只能等待，因为锁的的是<strong>当前对象this</strong>，要等锁释放，才能访问</p>
+        
+          <a class="article-more-a" href="/2020/07/01/锁的演示/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">锁</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/多线程//" class="article-tag-list-link color4">多线程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/01/锁的演示/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ZooKeeper-Paxos" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/26/ZooKeeper-Paxos/">ZooKeeper-Paxos【转载】</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/26/ZooKeeper-Paxos/" class="archive-article-date">
+  	<time datetime="2020-02-26T01:04:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转载于作者-<a href="https://www.douban.com/people/twogood/" target="_blank" rel="noopener">摩萨德</a></p>
+<p>那么ZK Server最基础的东西是什么呢？我想应该是Paxos了。所以本文会介绍Paxos以及它在ZK Server中对应的实现。</p>
+<p>先说Paxos，它是一个基于消息传递的一致性算法，Leslie Lamport在1990年提出，近几年被广泛应用于分布式计算中，Google的Chubby，Apache的Zookeeper都是基于它的理论来实现的，Paxos还被认为是到目前为止唯一的分布式一致性算法，其它的算法都是Paxos的改进或简化。有个问题要提一下，Paxos有一个前提：没有拜占庭将军问题。就是说Paxos只有在一个可信的计算环境中才能成立，这个环境是不会被入侵所破坏的。</p>
+<p>关于Paxos的具体描述可以在Wiki中找到：<a href="http://zh.wikipedia.org/zh-cn/Paxos算法。网上关于Paxos分析的文章也很多。这里希望用最简单的方式加以描述并建立起Paxos和ZK" target="_blank" rel="noopener">http://zh.wikipedia.org/zh-cn/Paxos算法。网上关于Paxos分析的文章也很多。这里希望用最简单的方式加以描述并建立起Paxos和ZK</a> Server的对应关系。</p>
+<p>Paxos描述了这样一个场景，有一个叫做Paxos的小岛(Island)上面住了一批居民，岛上面所有的事情由一些特殊的人决定，他们叫做议员(Senator)。议员的总数(Senator Count)是确定的，不能更改。岛上每次环境事务的变更都需要通过一个提议(Proposal)，每个提议都有一个编号(PID)，这个编号是一直增长的，不能倒退。每个提议都需要超过半数((Senator Count)/2 +1)的议员同意才能生效。每个议员只会同意大于当前编号的提议，包括已生效的和未生效的。如果议员收到小于等于当前编号的提议，他会拒绝，并告知对方：你的提议已经有人提过了。这里的当前编号是每个议员在自己记事本上面记录的编号，他不断更新这个编号。整个议会不能保证所有议员记事本上的编号总是相同的。现在议会有一个目标：保证所有的议员对于提议都能达成一致的看法。</p>
+<p>好，现在议会开始运作，所有议员一开始记事本上面记录的编号都是0。有一个议员发了一个提议：将电费设定为1元/度。他首先看了一下记事本，嗯，当前提议编号是0，那么我的这个提议的编号就是1，于是他给所有议员发消息：1号提议，设定电费1元/度。其他议员收到消息以后查了一下记事本，哦，当前提议编号是0，这个提议可接受，于是他记录下这个提议并回复：我接受你的1号提议，同时他在记事本上记录：当前提议编号为1。发起提议的议员收到了超过半数的回复，立即给所有人发通知：1号提议生效！收到的议员会修改他的记事本，将1好提议由记录改成正式的法令，当有人问他电费为多少时，他会查看法令并告诉对方：1元/度。</p>
+<p>现在看冲突的解决：假设总共有三个议员S1-S3，S1和S2同时发起了一个提议:1号提议，设定电费。S1想设为1元/度, S2想设为2元/度。结果S3先收到了S1的提议，于是他做了和前面同样的操作。紧接着他又收到了S2的提议，结果他一查记事本，咦，这个提议的编号小于等于我的当前编号1，于是他拒绝了这个提议：对不起，这个提议先前提过了。于是S2的提议被拒绝，S1正式发布了提议: 1号提议生效。S2向S1或者S3打听并更新了1号法令的内容，然后他可以选择继续发起2号提议。</p>
+<p>好，我觉得Paxos的精华就这么多内容。现在让我们来对号入座，看看在ZK Server里面Paxos是如何得以贯彻实施的。</p>
+<p>小岛(Island)——ZK Server Cluster</p>
+<p>议员(Senator)——ZK Server</p>
+<p>提议(Proposal)——ZNode Change(Create/Delete/SetData…)</p>
+<p>提议编号(PID)——Zxid(ZooKeeper Transaction Id)</p>
+<p>正式法令——所有ZNode及其数据</p>
+<p>貌似关键的概念都能一一对应上，但是等一下，Paxos岛上的议员应该是人人平等的吧，而ZK Server好像有一个Leader的概念。没错，其实Leader的概念也应该属于Paxos范畴的。如果议员人人平等，在某种情况下会由于提议的冲突而产生一个“活锁”（所谓活锁我的理解是大家都没有死，都在动，但是一直解决不了冲突问题）。Paxos的作者Lamport在他的文章”The Part-Time Parliament“中阐述了这个问题并给出了解决方案——在所有议员中设立一个总统，只有总统有权发出提议，如果议员有自己的提议，必须发给总统并由总统来提出。好，我们又多了一个角色：总统。</p>
+<p>总统——ZK Server Leader</p>
+<p>又一个问题产生了，总统怎么选出来的？oh, my god! It’s a long story. 在淘宝核心系统团队的Blog上面有一篇文章是介绍如何选出总统的，有兴趣的可以去看看：<a href="http://rdc.taobao.com/blog/cs/?p=162" target="_blank" rel="noopener">http://rdc.taobao.com/blog/cs/?p=162</a></p>
+<p>现在我们假设总统已经选好了，下面看看ZK Server是怎么实施的。</p>
+<p>情况一：</p>
+<p>居民甲(Client)到某个议员(ZK Server)那里询问(Get)某条法令的情况(ZNode的数据)，议员毫不犹豫的拿出他的记事本(local storage)，查阅法令并告诉他结果，同时声明：我的数据不一定是最新的。你想要最新的数据？没问题，等着，等我找总统Sync一下再告诉你。</p>
+<p>情况二：</p>
+<p>居民乙(Client)到某个议员(ZK Server)那里要求政府归还欠他的一万元钱，议员让他在办公室等着，自己将问题反映给了总统，总统询问所有议员的意见，多数议员表示欠居民的钱一定要还，于是总统发表声明，从国库中拿出一万元还债，国库总资产由100万变成99万。居民乙拿到钱回去了(Client函数返回)。</p>
+<p>情况三：</p>
+<p>总统突然挂了，议员接二连三的发现联系不上总统，于是各自发表声明，推选新的总统，总统大选期间政府停业，拒绝居民的请求。</p>
+<p>呵呵，到此为止吧，当然还有很多其他的情况，但这些情况总是能在Paxos的算法中找到原型并加以解决。这也正是我们认为Paxos是Zookeeper的灵魂的原因。当然ZK Server还有很多属于自己特性的东西：Session, Watcher，Version等等等等，需要我们花更多的时间去研究和学习。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-ZooKeeper</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/26/ZooKeeper-Paxos/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-nginx知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/05/nginx知识点/">Nginx知识点</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/05/nginx知识点/" class="archive-article-date">
+  	<time datetime="2020-01-05T07:54:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><ul>
+<li><p>Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个BSD-like 协议下发行。由俄罗斯的程序设计师Igor Sysoev所开发，</p>
+</li>
+<li><p>其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好，中国大陆使用nginx网站用户有：新浪、网易、腾讯等。</p>
+</li>
+<li><p>功能：</p>
+<ul>
+<li>web服务器</li>
+<li>web reverse proxy</li>
+<li>smtp reverse proxy</li>
+</ul>
+</li>
+</ul>
+<h3 id="Nginx和apache的优缺点"><a href="#Nginx和apache的优缺点" class="headerlink" title="Nginx和apache的优缺点"></a>Nginx和apache的优缺点</h3><ul>
+<li><p>1、nginx相对于apache的优点：<br> 轻量级，同样起web 服务，比apache 占用更少的内存及资源<br> <strong>抗并发</strong>，nginx 处理请求是<strong>异步非阻塞</strong>的，而apache 则是<strong>阻塞型</strong>的，在高并发下nginx 能保持低资源低消耗高性能<br> 高度模块化的设计，编写模块相对简单<br> 社区活跃，各种高性能模块出品迅速啊 </p>
+</li>
+<li><p>2、apache 相对于nginx 的优点：<br> rewrite ，比nginx 的rewrite 强大<br> 模块超多，基本想到的都可以找到<br> 少bug ，nginx 的bug 相对较多 </p>
+</li>
+<li><p>3、Nginx 配置简洁, Apache 复杂 </p>
+</li>
+<li><p>4、<strong>最核心的区别</strong>在于apache是同步多进程模型，一个连接对应一个进程；nginx是异步的，多个连接（万级别）可以对应一个进程</p>
+<p><strong>由于apache同步多进程，来一个连接就fork()一个进程，所以在进程间切换时会有资源损耗，而nginx是异步非阻塞的所以资源消耗较少</strong></p>
+</li>
+</ul>
+<h3 id="Nginx安装"><a href="#Nginx安装" class="headerlink" title="Nginx安装"></a>Nginx安装</h3><ol>
+<li>先安装依赖</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc openssl-devel pcre-devel zlib-devel</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>解压进入目录    ./configure 默认安装</p>
+<p>./configure –help 查看安装选项</p>
+</li>
+<li><p>常用命令</p>
+<p>nginx -s relaod  //重新加载配置文件</p>
+<p>nginx -s restart //重新启动</p>
+<p>nginx -t //查看加载的配置文件</p>
+</li>
+</ol>
+<h3 id="Nginx热加载原理"><a href="#Nginx热加载原理" class="headerlink" title="Nginx热加载原理"></a>Nginx热加载原理</h3><p>​      nginx有两个进程一个<strong>master进程</strong>不处理客户端连接，一个<strong>worker进程</strong>来处理连接（master的子进程），两个进程的权限也不同，<strong>master是root权限</strong>，<strong>worker是nobody</strong>可以通过配置文件来进行设置，worker只能访问属于该用户的目录，worker进程在创建时会加载配置文件，当修改了配置文件，用reload命令重新加载时，之前的worker进程接着处理之前的连接，然后master进程生成一个新的worker进程，该进程读取新的配置文件，当旧的worker处理完连接时，master会回收它。reload只能进行一些简单的页面加载，当有什么不允许两个同时存在的worker进程必须重启。</p>
+<p><img src="/2020/01/05/nginx知识点/1.jpg" alt></p>
+<h3 id="Nginx配置文件作用"><a href="#Nginx配置文件作用" class="headerlink" title="Nginx配置文件作用"></a>Nginx配置文件作用</h3><h4 id="工作模式与连接数上限"><a href="#工作模式与连接数上限" class="headerlink" title="工作模式与连接数上限"></a>工作模式与连接数上限</h4><p>events</p>
+<p>{</p>
+<p>​    #参考事件模型，use [ kqueue | rtsig | epoll | /dev/poll | select | poll ]; epoll模型是Linux 2.6以上版本内核    中的高性能网络I/O模型，如果跑在FreeBSD上面，就用kqueue模型。</p>
+<p>​    use epoll;</p>
+<p>​    #单个进程最大连接数（最大连接数=连接数*进程数）</p>
+<p>​    worker_connections 1024;   </p>
+<p>}</p>
+<h4 id="event下的一些配置及其意义"><a href="#event下的一些配置及其意义" class="headerlink" title="event下的一些配置及其意义"></a>event下的一些配置及其意义</h4><p>单个后台worker process进程的最大并发链接数  </p>
+<p>worker_connections 1024;</p>
+<ul>
+<li><p>并发总数是 worker_processes 和 worker_con                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    nections 的乘积</p>
+</li>
+<li><p>即 max_clients = worker_processes * worker_connections</p>
+</li>
+<li><p>在设置了反向代理的情况下，max_clients = worker_processes * worker_connections / 4 为什么</p>
+</li>
+<li><p>为什么上面反向代理要除以4，应该说是一个经验值</p>
+</li>
+<li><p>根据以上条件，正常情况下的Nginx Server可以应付的最大连接数为：4 * 8000 = 32000</p>
+</li>
+<li><p>worker_connections 值的设置跟物理内存大小有关</p>
+</li>
+<li><p>因为并发受IO约束，<strong>max_clients的值须小于系统可以打开的最大文件数</strong>            </p>
+<p>​                                    </p>
+</li>
+<li><p>而系统可以打开的最大文件数和内存大小成正比，一般1GB内存的机器上可以打开的文件数大约是10万左右</p>
+</li>
+<li><p>我们来看看3G内存的VPS可以打开的文件句柄数是多少：</p>
+</li>
+<li><p>$ cat /proc/sys/fs/file-max</p>
+</li>
+<li><p>输出 379212</p>
+</li>
+<li><p>32000 &lt; 379212，即并发连接总数小于系统可以打开的文件句柄总数，这样就在操作系统可以承受的范围之内</p>
+</li>
+<li><p>所以，worker_connections 的值需根据 worker_processes 进程数目和系统可以打开的最大文件总数进行适当地进行设置</p>
+</li>
+<li><p>使得并发总数小于操作系统可以打开的最大文件数目</p>
+</li>
+<li><p>其实质也就是根据主机的物理CPU和内存进行配置</p>
+</li>
+<li><p>当然，理论上的并发总数可能会和实际有所偏差，因为主机还有其他的工作进程需要消耗系统资源。</p>
+</li>
+<li><p>ulimit -SHn 65535</p>
+</li>
+</ul>
+<p><img src="/2020/01/05/nginx知识点/2.jpg" alt></p>
+<p>open files 一个进程可以打开的最大文件操作符数量</p>
+<h4 id="nginx-conf其他配置"><a href="#nginx-conf其他配置" class="headerlink" title="nginx.conf其他配置"></a>nginx.conf其他配置</h4><ul>
+<li><p>定义Nginx运行的用户和用户组</p>
+<ul>
+<li>user www www;</li>
+</ul>
+</li>
+<li><p>nginx进程数，建议设置为等于CPU总核心数。</p>
+<ul>
+<li>worker_processes 8;</li>
+</ul>
+</li>
+<li><p>全局错误日志定义类型，[ debug | info | notice | warn | error | crit ]</p>
+<ul>
+<li>error_log /var/log/nginx/error.log info;</li>
+</ul>
+</li>
+<li><p>进程文件</p>
+<ul>
+<li>pid /var/run/nginx.pid;</li>
+</ul>
+</li>
+<li><p>一个nginx进程打开的最多文件描述符数目，理论值应该是最多打开文件数（系统的值ulimit -n）与nginx进程数相除，但是nginx分配请求并不均匀，所以建议与ulimit -n的值保持一致。</p>
+<ul>
+<li>worker_rlimit_nofile 65535;</li>
+</ul>
+</li>
+</ul>
+<h4 id="http下的一些配置及其意义"><a href="#http下的一些配置及其意义" class="headerlink" title="http下的一些配置及其意义"></a>http下的一些配置及其意义</h4><p>–#设定http服务器</p>
+<p>​    http</p>
+<p>​    {</p>
+<p>​    include mime.types; #文件扩展名与文件类型映射表</p>
+<p>​    default_type application/octet-stream; #默认文件类型</p>
+<p>​    #charset utf-8; #默认编码</p>
+<p>​    server_names_hash_bucket_size 128; #服务器名字的hash表大小</p>
+<p>​    client_header_buffer_size 32k; #上传文件大小限制</p>
+<p>​    large_client_header_buffers 4 64k; #设定请求缓存</p>
+<p>​    client_max_body_size 8m; #设定请求缓存</p>
+<p>​    sendfile on; #开启高效文件传输模式，sendfile指令指定nginx是否调用sendfile函数来输出文件，对于普通应                            用设为 on，如果用来进行下载等应用磁盘IO重负载应用，可设置为off，以平衡磁盘与网络I/O处                            理速度，降低系统的负载。注意：如果图片显示不正常把这个改成off。</p>
+<p>​    autoindex on; #开启目录列表访问，合适下载服务器，默认关闭。</p>
+<p>​    tcp_nopush on; #防止网络阻塞，不设置缓冲区，设置缓冲区可能不能及时返回结果</p>
+<p>​    tcp_nodelay on; #防止网络阻塞</p>
+<p>​    keepalive_timeout 120; #长连接超时时间，单位是秒，减少建立tcp连接过程</p>
+<h4 id="gzip的一些配置及其意义"><a href="#gzip的一些配置及其意义" class="headerlink" title="gzip的一些配置及其意义"></a>gzip的一些配置及其意义</h4><p>#gzip模块设置</p>
+<ul>
+<li>gzip on; #开启gzip压缩输出</li>
+<li>gzip_min_length 1k; #最小压缩文件大小</li>
+<li>gzip_buffers 4 16k; #压缩缓冲区</li>
+<li>gzip_http_version 1.0; #压缩版本（默认1.1，前端如果是squid2.5请使用1.0）</li>
+<li>gzip_comp_level 2; #压缩等级</li>
+<li>gzip_types text/plain application/x-javascript text/css application/xml;<br>#压缩类型，默认就已经包含text/html，所以下面就不用再写了，写上去也不会有问题，但是会有一个warn。</li>
+<li>gzip_vary on;<br>#limit_zone crawler $binary_remote_addr 10m; #开启限制IP连接数的时候需要使用</li>
+</ul>
+<h4 id="虚拟主机一些配置及其意义"><a href="#虚拟主机一些配置及其意义" class="headerlink" title="虚拟主机一些配置及其意义"></a>虚拟主机一些配置及其意义</h4><p>虚拟主机的配置<br> server<br> {<br> #监听端口<br> listen 80;<br> #域名可以有多个，用空格隔开<br> server_name <a href="http://www.ha97.com" target="_blank" rel="noopener">www.ha97.com</a> ha97.com;<br> index index.html index.htm index.jsp;        #autoindex on 显示目录下文件就像镜像源一样<br> root /data/www/ha97;<br> location ~ .*.(php|php5)?$<br> {<br> fastcgi_pass 127.0.0.1:9000;<br> fastcgi_index index.jsp;<br> include fastcgi.conf;<br> }</p>
+<p><img src="/2020/01/05/nginx知识点/3.jpg" alt></p>
+<p><strong>一个server表示一个虚拟主机</strong></p>
+<p><strong>nginx 收到请求头：判定ip，port，hosts决定server</strong></p>
+<h4 id="location-映射（ngx-http-core-module）"><a href="#location-映射（ngx-http-core-module）" class="headerlink" title="location 映射（ngx_http_core_module）"></a>location 映射（ngx_http_core_module）</h4><p><a href="http://tengine.taobao.org/nginx_docs/cn/docs/http/ngx_http_core_module.html#location" target="_blank" rel="noopener">参考官网</a></p>
+<p>location [ = | ~ | <del>* | ^</del> ] uri { … }</p>
+<ul>
+<li>location URI {}:</li>
+<li>对当前路径及子路径下的所有对象都生效；</li>
+<li>location = URI {}: 注意URL最好为具体路径。</li>
+<li>精确匹配指定的路径，不包括子路径，因此，只对当前资源生效；</li>
+<li>location ~ URI {}:</li>
+<li>location ~* URI {}:</li>
+<li>模式匹配URI，此处的URI可使用正则表达式，<del>区分字符大小写，</del>*不区分字符大小写；</li>
+<li>location ^~ URI {}:</li>
+<li>不使用正则表达式</li>
+<li>优先级：= &gt; ^~ &gt; <del>|</del>* &gt; /|/dir/</li>
+</ul>
+<p><strong>是拿location字段匹配用户请求的字段</strong></p>
+<h4 id="location配置规则"><a href="#location配置规则" class="headerlink" title="location配置规则"></a>location配置规则</h4><ul>
+<li><p>location 的执行逻辑跟 location 的编辑顺序无关。(就是配置文件里写的顺序)<br> 矫正：这句话不全对，“普通 location ”的匹配规则是“最大前缀”，因此“普通 location ”的确与 location 编辑顺序无关；</p>
+</li>
+<li><p>但是“正则 location ”的匹配规则是“顺序匹配，<strong>且只要匹配到第一个就停止后面的匹配</strong>”；</p>
+</li>
+<li><p>“普通location ”与“正则 location ”之间的匹配顺序是？先匹配普通 location ，再“考虑”匹配正则 location 。</p>
+</li>
+<li><p>注意这里的“考虑”是“可能”的意思，也就是说匹配完“普通 location ”后，有的时候需要继续匹配“正则 location ”，有的时候则不需要继续匹配“正则 location ”。两种情况下，不需要继续匹配正则 location ：</p>
+<ol>
+<li><p>当普通 location 前面指定了“ ^~ ”，特别告诉 Nginx 本条普通 location 一旦匹配上，则不需要继续正则匹配；</p>
+</li>
+<li><p>当普通location 恰好严格匹配上，不是最大前缀匹配，则不再继续匹配正则</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><ul>
+<li><p>通常的代理服务器，只用于代理内部网络对Internet的连接请求，客户机必须指定代理服务器,并将本来要直接发送到Web服务器上的http请求发送到代理服务器中由代理服务器向Internet上的web服务器发起请求，最终达到客户机上网的目的。</p>
+</li>
+<li><p>反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器</p>
+</li>
+</ul>
+<p><strong>proxy_pass</strong></p>
+<p> location /baidu {</p>
+<p>​     proxy_pass <a href="http://192.168.9.12【/】" target="_blank" rel="noopener">http://192.168.9.12【/】</a>; //nginx收到客户端的uri是否传递到上游，由是否在上游域名后有uri设定，没有uri的情况下：传递</p>
+<p>}</p>
+<p><strong>就是说如果有url访问的就是那个url，没有url就访问ip+location后的，向上面</strong></p>
+<p>*<em>加/就访问 <a href="http://192.168.9.12/" target="_blank" rel="noopener">http://192.168.9.12/</a> *</em></p>
+<p><strong>不加/就访问 <a href="http://192.168.9.12/baudu" target="_blank" rel="noopener">http://192.168.9.12/baudu</a></strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/05/nginx知识点/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-对目录创建软链接问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -527,465 +1129,9 @@
 
 
   
-    <article id="post-hive知识点梳理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/05/hive知识点梳理/">hive知识点梳理(一)</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/05/hive知识点梳理/" class="archive-article-date">
-  	<time datetime="2019-11-05T00:09:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="hive是数据仓库"><a href="#hive是数据仓库" class="headerlink" title="hive是数据仓库"></a>hive是数据仓库</h3><h4 id="数据库和数据仓库的区别"><a href="#数据库和数据仓库的区别" class="headerlink" title="数据库和数据仓库的区别"></a>数据库和数据仓库的区别</h4><p>1.Hive将元数据存储在数据库中，如mysql、derby。Hive中的元数据包括表的名字，表的列和分区及其属性，表的属性（是否为外部表等），表的数据所在目录等</p>
-        
-          <a class="article-more-a" href="/2019/11/05/hive知识点梳理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/05/hive知识点梳理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MapReduce执行过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/03/MapReduce执行过程/">查看MapReduce切片过程</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/03/MapReduce执行过程/" class="archive-article-date">
-  	<time datetime="2019-11-03T06:59:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Job"><a href="#Job" class="headerlink" title="Job"></a>Job</h3><p>通过找查看<strong>Job</strong>类的的继承及其实现类，最终找到了<strong>interface MRJobConfig</strong></p>
-        
-          <a class="article-more-a" href="/2019/11/03/MapReduce执行过程/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MapReduce</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/03/MapReduce执行过程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MapReduce高可用环境搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/27/MapReduce高可用环境搭建/">MapReduce高可用环境搭建</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/27/MapReduce高可用环境搭建/" class="archive-article-date">
-  	<time datetime="2019-10-27T14:06:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="总体架构"><a href="#总体架构" class="headerlink" title="总体架构"></a>总体架构</h3><p>版本hadoop-2.6.5 jdk7</p>
-<table>
-<thead>
-<tr>
-<th align="center">node</th>
-<th align="center">NN1</th>
-<th align="center">NN2</th>
-<th align="center">DN</th>
-<th align="center">ZK</th>
-<th align="center">ZKFC</th>
-<th align="center">JNN</th>
-<th align="center">RS</th>
-<th align="center">NM</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">node001</td>
-<td align="center">*</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">*</td>
-<td align="center">*</td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">node002</td>
-<td align="center"></td>
-<td align="center">*</td>
-<td align="center">*</td>
-<td align="center">*</td>
-<td align="center">*</td>
-<td align="center">*</td>
-<td align="center"></td>
-<td align="center">*</td>
-</tr>
-<tr>
-<td align="center">node003</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">*</td>
-<td align="center">*</td>
-<td align="center"></td>
-<td align="center">*</td>
-<td align="center">*</td>
-<td align="center">*</td>
-</tr>
-<tr>
-<td align="center">node004</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">*</td>
-<td align="center">*</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">*</td>
-<td align="center">*</td>
-</tr>
-</tbody></table>
-        
-          <a class="article-more-a" href="/2019/10/27/MapReduce高可用环境搭建/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MapReduce</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/27/MapReduce高可用环境搭建/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-yarn与MapReduce" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/27/yarn与MapReduce/">yarn与MapReduce</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/27/yarn与MapReduce/" class="archive-article-date">
-  	<time datetime="2019-10-27T13:36:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="MapReduce-1-x"><a href="#MapReduce-1-x" class="headerlink" title="MapReduce(1.x)"></a>MapReduce(1.x)</h3><p>•理解：</p>
-<p>​    –Map：</p>
-<p>​        •读懂数据</p>
-<p>​        •映射为KV模型</p>
-<p>​        •并行分布式</p>
-<p>​        •计算向数据移动</p>
-        
-          <a class="article-more-a" href="/2019/10/27/yarn与MapReduce/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MapReduce</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/27/yarn与MapReduce/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HDFS相关理论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/21/HDFS相关理论/">HDFS相关理论</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/21/HDFS相关理论/" class="archive-article-date">
-  	<time datetime="2019-10-21T05:21:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Hadoop-HDFS"><a href="#Hadoop-HDFS" class="headerlink" title="Hadoop-HDFS"></a>Hadoop-HDFS</h3><h4 id="存储模型：字节"><a href="#存储模型：字节" class="headerlink" title="存储模型：字节"></a>存储模型：字节</h4>
-        
-          <a class="article-more-a" href="/2019/10/21/HDFS相关理论/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/21/HDFS相关理论/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -997,7 +1143,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 JerryMao
+    		&copy; 2021 JerryMao
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1080,6 +1226,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">java8</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
@@ -1096,11 +1246,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hadoop</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color2">hadoop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1120,19 +1270,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hbase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">分治算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+                <a href="javascript:void(0)" class="js-tag color1">-ZooKeeper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1140,11 +1282,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+                <a href="javascript:void(0)" class="js-tag color1">hbase</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">堆</a>
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1152,15 +1302,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">堆</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">在线处理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color2">锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
