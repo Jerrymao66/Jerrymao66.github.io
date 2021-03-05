@@ -309,6 +309,93 @@
 
 
   
+    <article id="post-this指针逃逸" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/02/this指针逃逸/">this指针逃逸</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/02/this指针逃逸/" class="archive-article-date">
+  	<time datetime="2020-07-02T02:38:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="this指针逃逸问题"><a href="#this指针逃逸问题" class="headerlink" title="this指针逃逸问题"></a>this指针逃逸问题</h3><p>在构造过程中使this逸出的一个常见错误，在构造函数中启动一个线程，无论显示创建，还是隐式创建一个线程，<strong>this引用都会被新创建的线程共享</strong>，在未完全构造前，新的线程就可以看见它。</p>
+        
+          <a class="article-more-a" href="/2020/07/02/this指针逃逸/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/多线程//" class="article-tag-list-link color4">多线程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/02/this指针逃逸/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-锁的演示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -510,183 +597,9 @@
 </ul>
 </li>
 </ul>
-<h3 id="Nginx和apache的优缺点"><a href="#Nginx和apache的优缺点" class="headerlink" title="Nginx和apache的优缺点"></a>Nginx和apache的优缺点</h3><ul>
-<li><p>1、nginx相对于apache的优点：<br> 轻量级，同样起web 服务，比apache 占用更少的内存及资源<br> <strong>抗并发</strong>，nginx 处理请求是<strong>异步非阻塞</strong>的，而apache 则是<strong>阻塞型</strong>的，在高并发下nginx 能保持低资源低消耗高性能<br> 高度模块化的设计，编写模块相对简单<br> 社区活跃，各种高性能模块出品迅速啊 </p>
-</li>
-<li><p>2、apache 相对于nginx 的优点：<br> rewrite ，比nginx 的rewrite 强大<br> 模块超多，基本想到的都可以找到<br> 少bug ，nginx 的bug 相对较多 </p>
-</li>
-<li><p>3、Nginx 配置简洁, Apache 复杂 </p>
-</li>
-<li><p>4、<strong>最核心的区别</strong>在于apache是同步多进程模型，一个连接对应一个进程；nginx是异步的，多个连接（万级别）可以对应一个进程</p>
-<p><strong>由于apache同步多进程，来一个连接就fork()一个进程，所以在进程间切换时会有资源损耗，而nginx是异步非阻塞的所以资源消耗较少</strong></p>
-</li>
-</ul>
-<h3 id="Nginx安装"><a href="#Nginx安装" class="headerlink" title="Nginx安装"></a>Nginx安装</h3><ol>
-<li>先安装依赖</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc openssl-devel pcre-devel zlib-devel</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>解压进入目录    ./configure 默认安装</p>
-<p>./configure –help 查看安装选项</p>
-</li>
-<li><p>常用命令</p>
-<p>nginx -s relaod  //重新加载配置文件</p>
-<p>nginx -s restart //重新启动</p>
-<p>nginx -t //查看加载的配置文件</p>
-</li>
-</ol>
-<h3 id="Nginx热加载原理"><a href="#Nginx热加载原理" class="headerlink" title="Nginx热加载原理"></a>Nginx热加载原理</h3><p>​      nginx有两个进程一个<strong>master进程</strong>不处理客户端连接，一个<strong>worker进程</strong>来处理连接（master的子进程），两个进程的权限也不同，<strong>master是root权限</strong>，<strong>worker是nobody</strong>可以通过配置文件来进行设置，worker只能访问属于该用户的目录，worker进程在创建时会加载配置文件，当修改了配置文件，用reload命令重新加载时，之前的worker进程接着处理之前的连接，然后master进程生成一个新的worker进程，该进程读取新的配置文件，当旧的worker处理完连接时，master会回收它。reload只能进行一些简单的页面加载，当有什么不允许两个同时存在的worker进程必须重启。</p>
-<p><img src="/2020/01/05/nginx知识点/1.jpg" alt></p>
-<h3 id="Nginx配置文件作用"><a href="#Nginx配置文件作用" class="headerlink" title="Nginx配置文件作用"></a>Nginx配置文件作用</h3><h4 id="工作模式与连接数上限"><a href="#工作模式与连接数上限" class="headerlink" title="工作模式与连接数上限"></a>工作模式与连接数上限</h4><p>events</p>
-<p>{</p>
-<p>​    #参考事件模型，use [ kqueue | rtsig | epoll | /dev/poll | select | poll ]; epoll模型是Linux 2.6以上版本内核    中的高性能网络I/O模型，如果跑在FreeBSD上面，就用kqueue模型。</p>
-<p>​    use epoll;</p>
-<p>​    #单个进程最大连接数（最大连接数=连接数*进程数）</p>
-<p>​    worker_connections 1024;   </p>
-<p>}</p>
-<h4 id="event下的一些配置及其意义"><a href="#event下的一些配置及其意义" class="headerlink" title="event下的一些配置及其意义"></a>event下的一些配置及其意义</h4><p>单个后台worker process进程的最大并发链接数  </p>
-<p>worker_connections 1024;</p>
-<ul>
-<li><p>并发总数是 worker_processes 和 worker_con                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    nections 的乘积</p>
-</li>
-<li><p>即 max_clients = worker_processes * worker_connections</p>
-</li>
-<li><p>在设置了反向代理的情况下，max_clients = worker_processes * worker_connections / 4 为什么</p>
-</li>
-<li><p>为什么上面反向代理要除以4，应该说是一个经验值</p>
-</li>
-<li><p>根据以上条件，正常情况下的Nginx Server可以应付的最大连接数为：4 * 8000 = 32000</p>
-</li>
-<li><p>worker_connections 值的设置跟物理内存大小有关</p>
-</li>
-<li><p>因为并发受IO约束，<strong>max_clients的值须小于系统可以打开的最大文件数</strong>            </p>
-<p>​                                    </p>
-</li>
-<li><p>而系统可以打开的最大文件数和内存大小成正比，一般1GB内存的机器上可以打开的文件数大约是10万左右</p>
-</li>
-<li><p>我们来看看3G内存的VPS可以打开的文件句柄数是多少：</p>
-</li>
-<li><p>$ cat /proc/sys/fs/file-max</p>
-</li>
-<li><p>输出 379212</p>
-</li>
-<li><p>32000 &lt; 379212，即并发连接总数小于系统可以打开的文件句柄总数，这样就在操作系统可以承受的范围之内</p>
-</li>
-<li><p>所以，worker_connections 的值需根据 worker_processes 进程数目和系统可以打开的最大文件总数进行适当地进行设置</p>
-</li>
-<li><p>使得并发总数小于操作系统可以打开的最大文件数目</p>
-</li>
-<li><p>其实质也就是根据主机的物理CPU和内存进行配置</p>
-</li>
-<li><p>当然，理论上的并发总数可能会和实际有所偏差，因为主机还有其他的工作进程需要消耗系统资源。</p>
-</li>
-<li><p>ulimit -SHn 65535</p>
-</li>
-</ul>
-<p><img src="/2020/01/05/nginx知识点/2.jpg" alt></p>
-<p>open files 一个进程可以打开的最大文件操作符数量</p>
-<h4 id="nginx-conf其他配置"><a href="#nginx-conf其他配置" class="headerlink" title="nginx.conf其他配置"></a>nginx.conf其他配置</h4><ul>
-<li><p>定义Nginx运行的用户和用户组</p>
-<ul>
-<li>user www www;</li>
-</ul>
-</li>
-<li><p>nginx进程数，建议设置为等于CPU总核心数。</p>
-<ul>
-<li>worker_processes 8;</li>
-</ul>
-</li>
-<li><p>全局错误日志定义类型，[ debug | info | notice | warn | error | crit ]</p>
-<ul>
-<li>error_log /var/log/nginx/error.log info;</li>
-</ul>
-</li>
-<li><p>进程文件</p>
-<ul>
-<li>pid /var/run/nginx.pid;</li>
-</ul>
-</li>
-<li><p>一个nginx进程打开的最多文件描述符数目，理论值应该是最多打开文件数（系统的值ulimit -n）与nginx进程数相除，但是nginx分配请求并不均匀，所以建议与ulimit -n的值保持一致。</p>
-<ul>
-<li>worker_rlimit_nofile 65535;</li>
-</ul>
-</li>
-</ul>
-<h4 id="http下的一些配置及其意义"><a href="#http下的一些配置及其意义" class="headerlink" title="http下的一些配置及其意义"></a>http下的一些配置及其意义</h4><p>–#设定http服务器</p>
-<p>​    http</p>
-<p>​    {</p>
-<p>​    include mime.types; #文件扩展名与文件类型映射表</p>
-<p>​    default_type application/octet-stream; #默认文件类型</p>
-<p>​    #charset utf-8; #默认编码</p>
-<p>​    server_names_hash_bucket_size 128; #服务器名字的hash表大小</p>
-<p>​    client_header_buffer_size 32k; #上传文件大小限制</p>
-<p>​    large_client_header_buffers 4 64k; #设定请求缓存</p>
-<p>​    client_max_body_size 8m; #设定请求缓存</p>
-<p>​    sendfile on; #开启高效文件传输模式，sendfile指令指定nginx是否调用sendfile函数来输出文件，对于普通应                            用设为 on，如果用来进行下载等应用磁盘IO重负载应用，可设置为off，以平衡磁盘与网络I/O处                            理速度，降低系统的负载。注意：如果图片显示不正常把这个改成off。</p>
-<p>​    autoindex on; #开启目录列表访问，合适下载服务器，默认关闭。</p>
-<p>​    tcp_nopush on; #防止网络阻塞，不设置缓冲区，设置缓冲区可能不能及时返回结果</p>
-<p>​    tcp_nodelay on; #防止网络阻塞</p>
-<p>​    keepalive_timeout 120; #长连接超时时间，单位是秒，减少建立tcp连接过程</p>
-<h4 id="gzip的一些配置及其意义"><a href="#gzip的一些配置及其意义" class="headerlink" title="gzip的一些配置及其意义"></a>gzip的一些配置及其意义</h4><p>#gzip模块设置</p>
-<ul>
-<li>gzip on; #开启gzip压缩输出</li>
-<li>gzip_min_length 1k; #最小压缩文件大小</li>
-<li>gzip_buffers 4 16k; #压缩缓冲区</li>
-<li>gzip_http_version 1.0; #压缩版本（默认1.1，前端如果是squid2.5请使用1.0）</li>
-<li>gzip_comp_level 2; #压缩等级</li>
-<li>gzip_types text/plain application/x-javascript text/css application/xml;<br>#压缩类型，默认就已经包含text/html，所以下面就不用再写了，写上去也不会有问题，但是会有一个warn。</li>
-<li>gzip_vary on;<br>#limit_zone crawler $binary_remote_addr 10m; #开启限制IP连接数的时候需要使用</li>
-</ul>
-<h4 id="虚拟主机一些配置及其意义"><a href="#虚拟主机一些配置及其意义" class="headerlink" title="虚拟主机一些配置及其意义"></a>虚拟主机一些配置及其意义</h4><p>虚拟主机的配置<br> server<br> {<br> #监听端口<br> listen 80;<br> #域名可以有多个，用空格隔开<br> server_name <a href="http://www.ha97.com" target="_blank" rel="noopener">www.ha97.com</a> ha97.com;<br> index index.html index.htm index.jsp;        #autoindex on 显示目录下文件就像镜像源一样<br> root /data/www/ha97;<br> location ~ .*.(php|php5)?$<br> {<br> fastcgi_pass 127.0.0.1:9000;<br> fastcgi_index index.jsp;<br> include fastcgi.conf;<br> }</p>
-<p><img src="/2020/01/05/nginx知识点/3.jpg" alt></p>
-<p><strong>一个server表示一个虚拟主机</strong></p>
-<p><strong>nginx 收到请求头：判定ip，port，hosts决定server</strong></p>
-<h4 id="location-映射（ngx-http-core-module）"><a href="#location-映射（ngx-http-core-module）" class="headerlink" title="location 映射（ngx_http_core_module）"></a>location 映射（ngx_http_core_module）</h4><p><a href="http://tengine.taobao.org/nginx_docs/cn/docs/http/ngx_http_core_module.html#location" target="_blank" rel="noopener">参考官网</a></p>
-<p>location [ = | ~ | <del>* | ^</del> ] uri { … }</p>
-<ul>
-<li>location URI {}:</li>
-<li>对当前路径及子路径下的所有对象都生效；</li>
-<li>location = URI {}: 注意URL最好为具体路径。</li>
-<li>精确匹配指定的路径，不包括子路径，因此，只对当前资源生效；</li>
-<li>location ~ URI {}:</li>
-<li>location ~* URI {}:</li>
-<li>模式匹配URI，此处的URI可使用正则表达式，<del>区分字符大小写，</del>*不区分字符大小写；</li>
-<li>location ^~ URI {}:</li>
-<li>不使用正则表达式</li>
-<li>优先级：= &gt; ^~ &gt; <del>|</del>* &gt; /|/dir/</li>
-</ul>
-<p><strong>是拿location字段匹配用户请求的字段</strong></p>
-<h4 id="location配置规则"><a href="#location配置规则" class="headerlink" title="location配置规则"></a>location配置规则</h4><ul>
-<li><p>location 的执行逻辑跟 location 的编辑顺序无关。(就是配置文件里写的顺序)<br> 矫正：这句话不全对，“普通 location ”的匹配规则是“最大前缀”，因此“普通 location ”的确与 location 编辑顺序无关；</p>
-</li>
-<li><p>但是“正则 location ”的匹配规则是“顺序匹配，<strong>且只要匹配到第一个就停止后面的匹配</strong>”；</p>
-</li>
-<li><p>“普通location ”与“正则 location ”之间的匹配顺序是？先匹配普通 location ，再“考虑”匹配正则 location 。</p>
-</li>
-<li><p>注意这里的“考虑”是“可能”的意思，也就是说匹配完“普通 location ”后，有的时候需要继续匹配“正则 location ”，有的时候则不需要继续匹配“正则 location ”。两种情况下，不需要继续匹配正则 location ：</p>
-<ol>
-<li><p>当普通 location 前面指定了“ ^~ ”，特别告诉 Nginx 本条普通 location 一旦匹配上，则不需要继续正则匹配；</p>
-</li>
-<li><p>当普通location 恰好严格匹配上，不是最大前缀匹配，则不再继续匹配正则</p>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><ul>
-<li><p>通常的代理服务器，只用于代理内部网络对Internet的连接请求，客户机必须指定代理服务器,并将本来要直接发送到Web服务器上的http请求发送到代理服务器中由代理服务器向Internet上的web服务器发起请求，最终达到客户机上网的目的。</p>
-</li>
-<li><p>反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器</p>
-</li>
-</ul>
-<p><strong>proxy_pass</strong></p>
-<p> location /baidu {</p>
-<p>​     proxy_pass <a href="http://192.168.9.12【/】" target="_blank" rel="noopener">http://192.168.9.12【/】</a>; //nginx收到客户端的uri是否传递到上游，由是否在上游域名后有uri设定，没有uri的情况下：传递</p>
-<p>}</p>
-<p><strong>就是说如果有url访问的就是那个url，没有url就访问ip+location后的，向上面</strong></p>
-<p>*<em>加/就访问 <a href="http://192.168.9.12/" target="_blank" rel="noopener">http://192.168.9.12/</a> *</em></p>
-<p><strong>不加/就访问 <a href="http://192.168.9.12/baudu" target="_blank" rel="noopener">http://192.168.9.12/baudu</a></strong></p>
-
+        
+          <a class="article-more-a" href="/2020/01/05/nginx知识点/#more">more >></a>
+        
       
 
       
@@ -1035,76 +948,6 @@
 
 
   
-    <article id="post-hive知识点二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/06/hive知识点二/">hive知识点梳理(二)</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/06/hive知识点二/" class="archive-article-date">
-  	<time datetime="2019-11-06T07:46:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Hive-动态分区"><a href="#Hive-动态分区" class="headerlink" title="Hive 动态分区"></a>Hive 动态分区</h3><ul>
-<li><p>hive 动态分区</p>
-<p>​    —开启支持动态分区</p>
-<ul>
-<li><p>set hive.exec.dynamic.partition=true;</p>
-<p>​    默认：true</p></li></ul></li></ul>
-        
-          <a class="article-more-a" href="/2019/11/06/hive知识点二/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/06/hive知识点二/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1270,11 +1113,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
               </li>
              
               <li class="article-tag-list-item">
